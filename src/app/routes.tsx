@@ -1,6 +1,5 @@
 import { Outlet, RouteObject } from 'react-router-dom';
 
-import { AuthPageContainer } from '@pages/auth';
 import { HomePageContainer } from '@pages/home';
 import { LoginPageContainer } from '@pages/login/';
 import { NotFoundPageContainer } from '@pages/not-found';
@@ -32,10 +31,6 @@ export const routes: RouteObject[] = [
           </NotAuthorizedGuard>
         ),
         children: [
-          {
-            element: <AuthPageContainer />,
-            path: paths.auth,
-          },
           {
             element: <LoginPageContainer />,
             path: paths.login,
