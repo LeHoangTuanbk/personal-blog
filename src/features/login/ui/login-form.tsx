@@ -52,7 +52,12 @@ export const LoginForm = ({
           Admin login
         </Text>
         <FormControl isInvalid={!!errors.email}>
-          <Input placeholder="Email" {...register('email')} />
+          <Input
+            placeholder="Email"
+            {...register('email')}
+            type="email"
+            autoComplete="email"
+          />
           <FormErrorMessage>
             {errors.email && errors.email.message}
           </FormErrorMessage>

@@ -37,7 +37,6 @@ export const LoginFormContainer = () => {
     if (signInData) {
       successToast('Login successful');
       navigate(paths.admin.home);
-      return;
     }
     setIsLoading(false);
   };
