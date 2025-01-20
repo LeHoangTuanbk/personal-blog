@@ -1,0 +1,19 @@
+import { {{pascalCase name}} } from './{{kebabCase name}}';
+
+import type { Meta, StoryObj } from '@storybook/react';
+
+const meta: Meta<typeof {{pascalCase name}}> = {
+  title: '{{storyPath}}',
+  component: {{pascalCase name}},
+  args: {},
+  argTypes: {},
+};
+
+export default meta;
+
+type Story = StoryObj<typeof {{pascalCase name}}>;
+
+export const {{pascalCase name}}Story: Story = {
+  name: '{{kebabCase name}}',
+  render: args => <{{pascalCase name}} {...args} />,
+};
