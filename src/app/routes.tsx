@@ -2,6 +2,7 @@ import { Outlet, RouteObject } from 'react-router-dom';
 
 import { AuthPageContainer } from '@pages/auth';
 import { HomePageContainer } from '@pages/home';
+import { LoginPageContainer } from '@pages/login/';
 import { NotFoundPageContainer } from '@pages/not-found';
 import { paths } from '@shared/config';
 
@@ -34,6 +35,10 @@ export const routes: RouteObject[] = [
           {
             element: <AuthPageContainer />,
             path: paths.auth,
+          },
+          {
+            element: <LoginPageContainer />,
+            path: paths.login,
           },
         ],
       },
