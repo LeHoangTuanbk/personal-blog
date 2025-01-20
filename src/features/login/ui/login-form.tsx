@@ -42,7 +42,7 @@ export const LoginForm = ({
     <Box
       w="md"
       mx="auto"
-      h="100vh"
+      h="80dvh"
       display="flex"
       justifyContent="center"
       alignItems="center"
