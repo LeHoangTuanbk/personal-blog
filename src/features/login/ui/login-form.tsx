@@ -21,7 +21,7 @@ export const LoginForm = () => {
     }
     if (signInData) {
       successToast('Login successful');
-      navigate('/');
+      navigate('/admin/dashboard');
       return;
     }
   };
