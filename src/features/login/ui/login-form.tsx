@@ -1,4 +1,15 @@
-import { Box, Button, Input, Text, VStack } from '@chakra-ui/react';
+import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
+import {
+  Box,
+  Button,
+  IconButton,
+  Input,
+  InputGroup,
+  InputRightElement,
+  Text,
+  VStack,
+} from '@chakra-ui/react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { useLoginForm } from '@features/login/api';
@@ -9,8 +20,11 @@ import { useToast } from '@shared/ui/components/toast-factory';
 export const LoginForm = () => {
   const { handleSubmit, register } = useLoginForm();
   const { errorToast, successToast } = useToast();
+  const [isLoading, setIsLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const onSubmit = async (data: LoginSchema) => {
+    setIsLoading(true);
     const { data: signInData, error: signInError } =
       await supabaseClient.auth.signInWithPassword({
         email: data.email,
@@ -18,6 +32,7 @@ export const LoginForm = () => {
       });
     if (signInError) {
       errorToast(signInError.message);
+      setIsLoading(false);
       return;
     }
     if (signInData) {
@@ -25,6 +40,7 @@ export const LoginForm = () => {
       navigate(paths.admin.home);
       return;
     }
+    setIsLoading(false);
   };
   return (
     <Box
@@ -40,8 +56,22 @@ export const LoginForm = () => {
           Login
         </Text>
         <Input placeholder="Email" {...register('email')} />
-        <Input placeholder="Password" {...register('password')} />
-        <Button w="full" colorScheme="blue" type="submit">
+        <InputGroup>
+          <Input
+            placeholder="Password"
+            {...register('password')}
+            type={showPassword ? 'text' : 'password'}
+          />
+          <InputRightElement>
+            <IconButton
+              aria-label={showPassword ? 'Hide password' : 'Show password'}
+              icon={showPassword ? <ViewOffIcon /> : <ViewIcon />}
+              variant="ghost"
+              onClick={() => setShowPassword(!showPassword)}
+            />
+          </InputRightElement>
+        </InputGroup>
+        <Button w="full" colorScheme="blue" type="submit" isLoading={isLoading}>
           Login
         </Button>
       </VStack>
