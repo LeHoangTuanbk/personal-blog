@@ -1,11 +1,11 @@
 import { ChakraProvider, theme } from '@chakra-ui/react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { QueryClientProvider } from '@tanstack/react-query';
 import { routes } from './routes';
+import { queryClient } from '@shared/api/query-client';
 
 const router = createBrowserRouter(routes);
-const queryClient = new QueryClient();
 
 export const Providers = () => {
   return (
