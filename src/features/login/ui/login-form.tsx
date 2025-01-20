@@ -1,4 +1,5 @@
 import { Box, Button, Input, Text, VStack } from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
 
 import { useLoginForm } from '@features/login/api';
 import { LoginSchema } from '@features/login/api/schema';
@@ -7,6 +8,7 @@ import { useToast } from '@shared/ui/components/toast-factory';
 export const LoginForm = () => {
   const { handleSubmit, register } = useLoginForm();
   const { errorToast, successToast } = useToast();
+  const navigate = useNavigate();
   const onSubmit = async (data: LoginSchema) => {
     const { data: signInData, error: signInError } =
       await supabaseClient.auth.signInWithPassword({
@@ -19,6 +21,7 @@ export const LoginForm = () => {
     }
     if (signInData) {
       successToast('Login successful');
+      navigate('/');
       return;
     }
   };
