@@ -2,6 +2,8 @@ import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import {
   Box,
   Button,
+  FormControl,
+  FormErrorMessage,
   IconButton,
   Input,
   InputGroup,
@@ -18,7 +20,11 @@ import { supabaseClient } from '@shared/api/supabase-client';
 import { paths } from '@shared/config/paths';
 import { useToast } from '@shared/ui/components/toast-factory';
 export const LoginForm = () => {
-  const { handleSubmit, register } = useLoginForm();
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useLoginForm();
   const { errorToast, successToast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -46,31 +52,44 @@ export const LoginForm = () => {
     <Box
       w="md"
       mx="auto"
-      p={4}
-      h="full"
+      h="100vh"
+      display="flex"
       justifyContent="center"
       alignItems="center"
     >
-      <VStack spacing={4} as="form" onSubmit={handleSubmit(onSubmit)}>
+      <VStack spacing={4} as="form" onSubmit={handleSubmit(onSubmit)} w="full">
         <Text as="h1" fontSize="3xl" fontWeight="bold">
-          Login
+          Admin login
         </Text>
-        <Input placeholder="Email" {...register('email')} />
-        <InputGroup>
-          <Input
-            placeholder="Password"
-            {...register('password')}
-            type={showPassword ? 'text' : 'password'}
-          />
-          <InputRightElement>
-            <IconButton
-              aria-label={showPassword ? 'Hide password' : 'Show password'}
-              icon={showPassword ? <ViewOffIcon /> : <ViewIcon />}
-              variant="ghost"
-              onClick={() => setShowPassword(!showPassword)}
+        <FormControl isInvalid={!!errors.email}>
+          <Input placeholder="Email" {...register('email')} />
+          <FormErrorMessage>
+            {errors.email && errors.email.message}
+          </FormErrorMessage>
+        </FormControl>
+        <FormControl isInvalid={!!errors.password}>
+          <InputGroup>
+            <Input
+              placeholder="Password"
+              {...register('password')}
+              type={showPassword ? 'text' : 'password'}
             />
-          </InputRightElement>
-        </InputGroup>
+            <InputRightElement>
+              <IconButton
+                aria-label={showPassword ? 'Hide password' : 'Show password'}
+                icon={showPassword ? <ViewOffIcon /> : <ViewIcon />}
+                variant="ghost"
+                onClick={() => setShowPassword(!showPassword)}
+                _hover={{
+                  bg: 'transparent',
+                }}
+              />
+            </InputRightElement>
+          </InputGroup>
+          <FormErrorMessage>
+            {errors.password && errors.password.message}
+          </FormErrorMessage>
+        </FormControl>
         <Button w="full" colorScheme="blue" type="submit" isLoading={isLoading}>
           Login
         </Button>
