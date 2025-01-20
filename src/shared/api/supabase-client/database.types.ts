@@ -9,7 +9,131 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      labels: {
+        Row: {
+          content: string
+          created_at: string
+          id: string
+          slug: string | null
+          updated_at: string
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          id: string
+          slug?: string | null
+          updated_at?: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          id?: string
+          slug?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      posts: {
+        Row: {
+          content: string
+          created_at: string
+          id: string
+          slug: string | null
+          status: Database["public"]["Enums"]["post_status"]
+          title: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          id: string
+          slug?: string | null
+          status: Database["public"]["Enums"]["post_status"]
+          title?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          id?: string
+          slug?: string | null
+          status?: Database["public"]["Enums"]["post_status"]
+          title?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "posts_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      posts_labels: {
+        Row: {
+          label_id: string
+          post_id: string
+        }
+        Insert: {
+          label_id: string
+          post_id: string
+        }
+        Update: {
+          label_id?: string
+          post_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "posts_labels_label_id_fkey"
+            columns: ["label_id"]
+            isOneToOne: false
+            referencedRelation: "labels"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "posts_labels_post_id_fkey"
+            columns: ["post_id"]
+            isOneToOne: false
+            referencedRelation: "posts"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      users: {
+        Row: {
+          created_at: string
+          email_address: string
+          id: string
+          password: string
+          role: Database["public"]["Enums"]["user_role"]
+          status: Database["public"]["Enums"]["user_status"]
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          email_address: string
+          id: string
+          password: string
+          role: Database["public"]["Enums"]["user_role"]
+          status: Database["public"]["Enums"]["user_status"]
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          email_address?: string
+          id?: string
+          password?: string
+          role?: Database["public"]["Enums"]["user_role"]
+          status?: Database["public"]["Enums"]["user_status"]
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -18,7 +142,9 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      post_status: "draft" | "published" | "archived"
+      user_role: "admin" | "author" | "reader"
+      user_status: "active" | "inactive"
     }
     CompositeTypes: {
       [_ in never]: never
