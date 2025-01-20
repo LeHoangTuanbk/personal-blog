@@ -3,8 +3,6 @@ import { useForm } from "react-hook-form";
 
 import { LoginSchema, loginSchema } from "./schema";
 
-
-
 export const useLoginForm = () => {
   return useForm<LoginSchema>({
     defaultValues: {
