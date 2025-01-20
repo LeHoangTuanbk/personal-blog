@@ -3,21 +3,16 @@
 
 echo "🐶 Starting Husky pre-commit check..."
 
-if git diff --name-only --cached | grep 'client/'; then
-    echo "✨ Found changes in CLIENT folder"
-    echo "📝 Running check-all script..."
-    npm run check-all --prefix client || {
-        echo "❌ check-all failed"
-        exit 1
-    }
-    
-    echo "🔍 Running lint-staged..."
-    npm run lint-staged --prefix client || {
-        echo "❌ lint-staged failed"
-        exit 1
-    }
-    
-    echo "✅ All checks passed!"
-else
-    echo "💡 No changes in CLIENT folder - skipping checks"
-fi
+echo "📝 Running check-all script..."
+npm run check-all || {
+    echo "❌ check-all failed"
+    exit 1
+}
+
+echo "🔍 Running lint-staged..."
+npm run lint-staged || {
+    echo "❌ lint-staged failed"
+    exit 1
+}
+
+echo "✅ All checks passed!"

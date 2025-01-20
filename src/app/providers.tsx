@@ -3,7 +3,7 @@ import { QueryClientProvider } from '@tanstack/react-query';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import { queryClient } from '@shared/api/query-client';
-import { ToastProvider } from '@shared/ui/components/toast-factory/use-toast-context';
+import { ToastProvider } from '@shared/ui/components/toast-factory';
 
 import { routes } from './routes';
 const router = createBrowserRouter(routes);

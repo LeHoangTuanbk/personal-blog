@@ -1,9 +1,7 @@
-import { ReactNode } from 'react';
+// type Props = {
+//   stubSlot: ReactNode;
+// };
 
-type Props = {
-  stubSlot: ReactNode;
-};
-
-export const NotFoundPage = ({ stubSlot }: Props) => {
-  return stubSlot;
+export const NotFoundPage = () => {
+  return <div>NotFoundPage</div>;
 };

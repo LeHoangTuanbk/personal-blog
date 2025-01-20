@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useLoginForm } from '@features/login/api';
 import { LoginSchema } from '@features/login/api/schema';
 import { supabaseClient } from '@shared/api/supabase-client';
+import { paths } from '@shared/config/paths';
 import { useToast } from '@shared/ui/components/toast-factory';
 export const LoginForm = () => {
   const { handleSubmit, register } = useLoginForm();
@@ -21,7 +22,7 @@ export const LoginForm = () => {
     }
     if (signInData) {
       successToast('Login successful');
-      navigate('/admin/dashboard');
+      navigate(paths.admin.home);
       return;
     }
   };

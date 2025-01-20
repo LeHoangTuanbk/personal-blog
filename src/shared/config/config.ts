@@ -28,6 +28,8 @@ interface IConfig {
 }
 
 class Config implements IConfig {
+  private static _instance: Config;
+
   public readonly env: Env;
   public readonly projectName: string;
   public readonly supabaseUrl: string;
