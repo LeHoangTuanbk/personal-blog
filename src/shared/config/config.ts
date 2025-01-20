@@ -23,17 +23,23 @@ const validateEnv = (processEnvKey: string): string => {
 interface IConfig {
   readonly env: Env;
   readonly projectName: string;
+  readonly supabaseUrl: string;
+  readonly supabaseAnonKey: string;
 }
 
 class Config implements IConfig {
   public readonly env: Env;
   public readonly projectName: string;
+  public readonly supabaseUrl: string;
+  public readonly supabaseAnonKey: string;
 
   private constructor() {
     const parsedEnvDef = parseEnvDef(validateEnv('VITE_ENV'));
 
     this.env = parsedEnvDef;
     this.projectName = validateEnv('VITE_PROJECT_NAME');
+    this.supabaseUrl = validateEnv('VITE_SUPABASE_URL');
+    this.supabaseAnonKey = validateEnv('VITE_SUPABASE_ANON_KEY');
   }
 
   public static getInstance(): IConfig {
