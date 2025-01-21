@@ -14,15 +14,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [session, setSession] = useState<UserSessionType | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  const fetchUserSessionAndInfo = async () => {
-    const sessionInfo = await supabaseClient.auth.getSession();
-    setSession(sessionInfo.data.session);
-    setIsLoading(false);
-  };
-
   useEffect(() => {
-    fetchUserSessionAndInfo();
-
     const { data: subscription } = supabaseClient.auth.onAuthStateChange(
       (_, session) => {
         setSession(session);
