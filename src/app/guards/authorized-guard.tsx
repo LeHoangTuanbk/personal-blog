@@ -1,19 +1,16 @@
-import { ReactNode } from 'react';
+import { Text } from '@chakra-ui/react';
 import { Navigate } from 'react-router-dom';
 
-import { paths } from '@shared/config';
+import { useAuth } from '@app/guards';
 
-type Props = {
-  children: ReactNode;
-};
+export const AuthorizedGuard = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
+  const { session, isLoading } = useAuth();
+  if (isLoading) return <Text>Loading...</Text>;
+  if (!session) return <Navigate to="/login" />;
 
-export const AuthorizedGuard = ({ children }: Props) => {
-  const isLoggedIn = true; // TODO: update
-  // const { isLoggedIn } = useSession()
-
-  if (!isLoggedIn) {
-    return <Navigate to={paths.auth} />;
-  }
-
-  return children;
+  return <>{children}</>;
 };

@@ -36,9 +36,9 @@ export const LoginFormContainer = () => {
 
     if (signInData) {
       successToast('Login successful');
-      navigate(paths.admin.home);
+      setIsLoading(false);
+      navigate(paths.admin.dashboard);
     }
-    setIsLoading(false);
   };
   return (
     <LoginForm
