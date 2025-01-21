@@ -7,6 +7,13 @@ import { Database } from './database.types';
 export const supabaseClient = createClient<Database>(
   config.supabaseUrl,
   config.supabaseAnonKey,
+  {
+    auth: {
+      autoRefreshToken: true,
+      persistSession: true,
+      detectSessionInUrl: true,
+    },
+  },
 );
 
 export const supabaseDBTables = {

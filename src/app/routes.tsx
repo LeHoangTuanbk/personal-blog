@@ -1,5 +1,6 @@
 import { Outlet, RouteObject } from 'react-router-dom';
 
+import { AdminDashboardContainer } from '@pages/admin/dashboard';
 import { HomePageContainer } from '@pages/home';
 import { LoginPageContainer } from '@pages/login/';
 import { NotFoundPageContainer } from '@pages/not-found';
@@ -9,7 +10,7 @@ import { AuthorizedGuard, NotAuthorizedGuard, NotFoundGuard } from './guards';
 
 export const routes: RouteObject[] = [
   {
-    ErrorBoundary: () => null, // TODO: update
+    ErrorBoundary: () => null,
     children: [
       {
         element: (
@@ -19,8 +20,8 @@ export const routes: RouteObject[] = [
         ),
         children: [
           {
-            element: <HomePageContainer />,
-            path: paths.home,
+            element: <AdminDashboardContainer />,
+            path: paths.admin.dashboard,
           },
         ],
       },
@@ -31,6 +32,10 @@ export const routes: RouteObject[] = [
           </NotAuthorizedGuard>
         ),
         children: [
+          {
+            element: <HomePageContainer />,
+            path: paths.home,
+          },
           {
             element: <LoginPageContainer />,
             path: paths.login,
