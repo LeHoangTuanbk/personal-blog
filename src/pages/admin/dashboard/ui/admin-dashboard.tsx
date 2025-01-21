@@ -5,9 +5,13 @@ import { supabaseClient } from '@shared/api/supabase-client';
 import { useToast } from '@shared/ui/components/toast-factory';
 export const AdminDashboard = () => {
   const navigate = useNavigate();
-  const { successToast } = useToast();
+  const { successToast, errorToast } = useToast();
   const handleLogout = async () => {
-    await supabaseClient.auth.signOut();
+    const { error } = await supabaseClient.auth.signOut();
+    if (error) {
+      errorToast(error.message);
+      return;
+    }
     successToast('Logged out successfully');
     navigate('/login');
   };
