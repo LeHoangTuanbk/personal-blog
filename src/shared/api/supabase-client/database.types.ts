@@ -14,21 +14,21 @@ export type Database = {
           content: string;
           created_at: string;
           id: string;
-          slug: string | null;
+          slug: string;
           updated_at: string;
         };
         Insert: {
           content: string;
           created_at?: string;
-          id: string;
-          slug?: string | null;
+          id?: string;
+          slug: string;
           updated_at?: string;
         };
         Update: {
           content?: string;
           created_at?: string;
           id?: string;
-          slug?: string | null;
+          slug?: string;
           updated_at?: string;
         };
         Relationships: [];
@@ -109,7 +109,6 @@ export type Database = {
           created_at: string;
           email_address: string;
           id: string;
-          password: string;
           role: Database['public']['Enums']['user_role'];
           status: Database['public']['Enums']['user_status'];
           updated_at: string;
@@ -118,7 +117,6 @@ export type Database = {
           created_at?: string;
           email_address: string;
           id: string;
-          password: string;
           role: Database['public']['Enums']['user_role'];
           status: Database['public']['Enums']['user_status'];
           updated_at?: string;
@@ -127,7 +125,6 @@ export type Database = {
           created_at?: string;
           email_address?: string;
           id?: string;
-          password?: string;
           role?: Database['public']['Enums']['user_role'];
           status?: Database['public']['Enums']['user_status'];
           updated_at?: string;
