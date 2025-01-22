@@ -92,7 +92,8 @@ export const TinyMceRichEditor = () => {
           setupTOCPlugin(editor);
         }}
         init={{
-          height: 1000,
+          min_height: 500,
+          max_height: 500,
           menubar: true,
           promotion: false,
           branding: false,
@@ -108,6 +109,7 @@ export const TinyMceRichEditor = () => {
             'codesample',
             'directionality',
             'emoticons',
+            'fullscreen',
             'help',
             'image',
             'importcss',
@@ -131,7 +133,7 @@ export const TinyMceRichEditor = () => {
               '/tinymce/plugins/@dimakorotkov/tinymce-mathjax/plugin.min.js',
           },
           toolbar:
-            'undo redo | blocks fontfamily fontsize | toc | ' +
+            'undo redo | blocks fontfamily fontsize | fullscreen | toc | ' +
             'bold italic underline strikethrough | link image media table | ' +
             'align | numlist bullist | emoticons charmap | code codesample | ' +
             'preview save | searchreplace | help | ' +

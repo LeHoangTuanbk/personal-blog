@@ -6,5 +6,9 @@ export const AdminPageWrapper = ({
 }: {
   children: React.ReactNode;
 }) => {
-  return <Box mx="auto">{children}</Box>;
+  return (
+    <Box mx="auto" px={8} py={8}>
+      {children}
+    </Box>
+  );
 };

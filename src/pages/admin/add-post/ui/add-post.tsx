@@ -11,7 +11,7 @@ import { TinyMceRichEditor } from '@widgets/tiny-mce';
 
 export const AddPost = () => {
   return (
-    <VStack alignItems="flex-start" spacing={4}>
+    <VStack as="form" alignItems="flex-start" spacing={4}>
       <Text as="h1" fontSize="2xl" fontWeight="bold">
         Add Post
       </Text>
@@ -27,7 +27,7 @@ export const AddPost = () => {
         <FormLabel>Content</FormLabel>
         <TinyMceRichEditor />
       </FormControl>
-      <Button>Add Post</Button>
+      <Button type="submit">Submit</Button>
     </VStack>
   );
 };
