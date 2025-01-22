@@ -13,6 +13,7 @@ module.exports = {
     '.eslintrc.cjs',
     'src/shared/api/apollo-client/generated/',
     'plop-templates/',
+    'public/tinymce/**',
   ],
   parser: '@typescript-eslint/parser',
   settings: {
@@ -22,7 +23,14 @@ module.exports = {
       },
     },
   },
-  plugins: ['react-refresh', 'unicorn', 'vitest', 'unused-imports', 'import', 'react'],
+  plugins: [
+    'react-refresh',
+    'unicorn',
+    'vitest',
+    'unused-imports',
+    'import',
+    'react',
+  ],
   rules: {
     'react-refresh/only-export-components': [
       'warn',

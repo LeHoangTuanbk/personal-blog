@@ -92,7 +92,7 @@ export const TinyMceRichEditor = () => {
           setupTOCPlugin(editor);
         }}
         init={{
-          height: 500,
+          height: 1000,
           menubar: true,
           promotion: false,
           branding: false,
