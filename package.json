@@ -18,7 +18,8 @@
     "generate-graphql": "graphql-codegen --config apollo-codegen-config.ts",
     "prettify": "eslint --cache --fix src && prettier --cache --write src",
     "plop": "plop input --destinationpath $INIT_CWD",
-    "gen-db-types": "npx supabase gen types --lang=typescript --local --schema public > ./src/shared/api/supabase-client/database.types.ts"
+    "gen-db-types": "npx supabase gen types --lang=typescript --local --schema public > ./src/shared/api/supabase-client/database.types.ts",
+    "postinstall": "node postinstall.js"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
@@ -28,6 +29,7 @@
   "dependencies": {
     "@chakra-ui/icons": "^2.2.4",
     "@chakra-ui/react": "^2.8.2",
+    "@dimakorotkov/tinymce-mathjax": "^1.0.11",
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",
     "@hookform/resolvers": "^3.10.0",
@@ -37,6 +39,7 @@
     "framer-motion": "^11.3.28",
     "fs-extra": "^11.3.0",
     "jotai": "^2.9.3",
+    "mathjax": "^3.2.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.54.2",
