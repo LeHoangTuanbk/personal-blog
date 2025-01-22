@@ -1,2 +1,2 @@
 export { queryClient } from './client';
-export { queryKeys } from './query-keys';
+export { QueryKeys } from './query-keys';
