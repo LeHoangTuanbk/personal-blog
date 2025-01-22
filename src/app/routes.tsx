@@ -1,5 +1,6 @@
 import { Outlet, RouteObject } from 'react-router-dom';
 
+import { AddPostContainer } from '@pages/admin/add-post';
 import { AdminDashboardContainer } from '@pages/admin/dashboard';
 import { HomePageContainer } from '@pages/home';
 import { LoginPageContainer } from '@pages/login/';
@@ -22,6 +23,10 @@ export const routes: RouteObject[] = [
           {
             element: <AdminDashboardContainer />,
             path: paths.admin.dashboard,
+          },
+          {
+            element: <AddPostContainer />,
+            path: paths.admin.posts,
           },
         ],
       },

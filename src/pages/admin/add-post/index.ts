@@ -1,0 +1,1 @@
+export { AddPostContainer } from './ui';
