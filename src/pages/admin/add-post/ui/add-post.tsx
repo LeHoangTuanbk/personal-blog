@@ -8,12 +8,15 @@ import {
   Select,
   Box,
 } from '@chakra-ui/react';
+import { useRef } from 'react';
+import { Editor as TinyMCEEditor } from 'tinymce';
 
 import { useFetchLabels } from '@pages/admin/add-post/api/queries';
 import { TinyMceRichEditor } from '@widgets/tiny-mce';
 
 export const AddPost = () => {
   const { data: labels, isLoading, isError } = useFetchLabels();
+  const editorRef = useRef<TinyMCEEditor | null>(null);
   if (isLoading) return <Box>Loading...</Box>;
   if (isError) return <Box>Error</Box>;
   return (
@@ -37,7 +40,7 @@ export const AddPost = () => {
       </FormControl>
       <FormControl>
         <FormLabel>Content</FormLabel>
-        <TinyMceRichEditor />
+        <TinyMceRichEditor initialValue="" editorRef={editorRef} />
       </FormControl>
       <Button type="submit">Submit</Button>
     </VStack>
