@@ -29,7 +29,7 @@ export const routes: RouteObject[] = [
           },
           {
             element: <AddPostContainer />,
-            path: paths.admin.posts,
+            path: paths.admin.addPost,
           },
         ],
       },

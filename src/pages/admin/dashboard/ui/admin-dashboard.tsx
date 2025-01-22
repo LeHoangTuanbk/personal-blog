@@ -1,4 +1,4 @@
-import { Text, Button, VStack } from '@chakra-ui/react';
+import { Text, Button, VStack, Divider, HStack } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 
 import { supabaseClient } from '@shared/api/supabase-client';
@@ -17,13 +17,18 @@ export const AdminDashboard = () => {
     navigate('/login');
   };
   const handleAddPost = () => {
-    navigate(paths.admin.posts);
+    navigate(paths.admin.addPost);
   };
   return (
     <VStack alignItems="flex-start" spacing={4}>
-      <Text>Admin Dashboard</Text>
-      <Button onClick={handleAddPost}>Add posts</Button>
-      <Button onClick={handleLogout}>Logout</Button>
+      <Text fontSize="4xl" fontWeight="bold">
+        Admin Dashboard
+      </Text>
+      <HStack>
+        <Button onClick={handleAddPost}>Add post</Button>
+        <Button onClick={handleLogout}>Logout</Button>
+      </HStack>
+      <Divider borderColor="gray" borderWidth={1} />
     </VStack>
   );
 };
