@@ -15,11 +15,3 @@ export const PostStatusList = [
 ] as const;
 
 export type PostStatusType = (typeof PostStatusList)[number];
-
-// type PostStatusKeys = keyof typeof PostStatusConst;
-
-// export const PostStatus: Record<PostStatusKeys, PostStatusType> = {
-//   Published: PostStatusConst.Published,
-//   Draft: PostStatusConst.Draft,
-//   Archived: PostStatusConst.Archived,
-// } as const;
