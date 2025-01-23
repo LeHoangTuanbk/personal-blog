@@ -110,7 +110,7 @@ export const PostForm = () => {
             label: status,
           })).find((option) => option.value === watch('status'))}
           onChange={(newValue) =>
-            setValue('status', newValue?.value || 'draft')
+            setValue('status', newValue?.value || PostStatus.Draft)
           }
           menuPortalTarget={document.body}
           styles={{
