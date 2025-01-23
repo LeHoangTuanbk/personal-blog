@@ -1,9 +1,8 @@
 import { Editor } from '@tinymce/tinymce-react';
-import { Editor as TinyMCEEditor } from 'tinymce';
 
 type TinyMceRichEditorProps = {
   initialValue: string;
-  editorRef: React.MutableRefObject<TinyMCEEditor | null>;
+  onChange: (text: string) => void;
 };
 
 import { setupTOCPlugin } from '@widgets/tiny-mce/api';
@@ -11,7 +10,7 @@ import { initConfig } from '@widgets/tiny-mce/ui/config';
 
 export const TinyMceRichEditor = ({
   initialValue,
-  editorRef,
+  onChange,
 }: TinyMceRichEditorProps) => {
   return (
     <>
@@ -19,10 +18,12 @@ export const TinyMceRichEditor = ({
         tinymceScriptSrc="/tinymce/tinymce.min.js"
         initialValue={initialValue}
         onInit={(_, editor) => {
-          editorRef.current = editor;
           setupTOCPlugin(editor);
         }}
         init={initConfig}
+        onEditorChange={(text) => {
+          onChange(text);
+        }}
       />
     </>
   );
