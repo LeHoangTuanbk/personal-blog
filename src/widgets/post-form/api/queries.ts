@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { fetchLabels } from '@pages/admin/add-post/api/fetch-labels';
 import { QueryKeys } from '@shared/api/query-client';
+import { fetchLabels } from '@widgets/post-form/api/fetch-labels';
 
 export const useFetchLabels = () => {
   return useQuery({
