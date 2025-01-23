@@ -8,7 +8,11 @@ const PostStatusConst = {
   Archived: 'archived',
 } as const;
 
-export const PostStatusList = Object.values(PostStatusConst);
+export const PostStatusList = [
+  PostStatusConst.Published,
+  PostStatusConst.Draft,
+  PostStatusConst.Archived,
+] as const;
 
 export type PostStatusType = (typeof PostStatusList)[number];
 
