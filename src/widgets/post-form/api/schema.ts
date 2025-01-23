@@ -1,8 +1,13 @@
 import { z } from 'zod';
 
+import { PostStatusList } from '@entities/posts/model';
+
 export const PostSchema = z.object({
   title: z.string().min(1, 'Title is required'),
   content: z.string().min(1, 'Content is required'),
+  status: z.enum(PostStatusList as [string, ...string[]], {
+    required_error: 'Status is required',
+  }),
   labels: z.array(z.string()).min(1, 'At least one label is required'),
 });
 

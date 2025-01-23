@@ -7,8 +7,13 @@ import {
   Box,
   FormErrorMessage,
 } from '@chakra-ui/react';
-import { Select as ChakraSelect, MultiValue } from 'chakra-react-select';
+import {
+  Select as ChakraSelect,
+  MultiValue,
+  Select,
+} from 'chakra-react-select';
 
+import { PostStatus, PostStatusList } from '@entities/posts/model';
 import { useFetchLabels, useSubmitPost } from '@widgets/post-form/api';
 import { PostSchema } from '@widgets/post-form/api';
 import { usePostForm } from '@widgets/post-form/api/use-post-form';
@@ -21,7 +26,15 @@ export const PostForm = () => {
     handleSubmit,
     formState: { errors },
     setValue,
-  } = usePostForm();
+    watch,
+  } = usePostForm({
+    defaultValues: {
+      title: '',
+      labels: [],
+      status: PostStatus.Draft,
+      content: '',
+    },
+  });
   const { mutate: submitPost } = useSubmitPost();
   const onSubmitPost = (data: PostSchema) => {
     submitPost(data);
@@ -81,6 +94,32 @@ export const PostForm = () => {
         />
         {errors.labels && (
           <FormErrorMessage>{errors.labels.message}</FormErrorMessage>
+        )}
+      </FormControl>
+      <FormControl isInvalid={!!errors.status}>
+        <FormLabel>Status</FormLabel>
+        <Select
+          options={PostStatusList.map((status) => ({
+            value: status,
+            label: status,
+          }))}
+          placeholder="Select status..."
+          {...register('status')}
+          value={PostStatusList.map((status) => ({
+            value: status,
+            label: status,
+          })).find((option) => option.value === watch('status'))}
+          onChange={(newValue) => setValue('status', newValue?.value ?? '')}
+          menuPortalTarget={document.body}
+          styles={{
+            menuPortal: (base) => ({
+              ...base,
+              zIndex: 9999,
+            }),
+          }}
+        />
+        {errors.status && (
+          <FormErrorMessage>{errors.status.message}</FormErrorMessage>
         )}
       </FormControl>
       <FormControl isInvalid={!!errors.content}>

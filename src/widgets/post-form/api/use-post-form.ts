@@ -3,9 +3,14 @@ import { useForm } from 'react-hook-form';
 
 import { PostSchema } from '@widgets/post-form/api/schema';
 
-export const usePostForm = () => {
+export const usePostForm = ({
+  defaultValues,
+}: {
+  defaultValues: PostSchema;
+}) => {
   return useForm<PostSchema>({
     resolver: zodResolver(PostSchema),
+    defaultValues,
   });
 };
 
