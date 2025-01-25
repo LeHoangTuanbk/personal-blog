@@ -12,8 +12,10 @@ import {
   MultiValue,
   Select,
 } from 'chakra-react-select';
+import { useNavigate } from 'react-router-dom';
 
 import { PostStatus, PostStatusList } from '@entities/posts/model';
+import { paths } from '@shared/config';
 import { useFetchLabels, useSubmitPost } from '@widgets/post-form/api';
 import { PostSchema } from '@widgets/post-form/api';
 import { usePostForm } from '@widgets/post-form/api/use-post-form';
@@ -35,9 +37,11 @@ export const PostForm = () => {
       content: '',
     },
   });
-  const { mutate: submitPost } = useSubmitPost();
-  const onSubmitPost = (data: PostSchema) => {
-    submitPost(data);
+  const navigate = useNavigate();
+  const { mutateAsync: submitPost } = useSubmitPost();
+  const onSubmitPost = async (data: PostSchema) => {
+    await submitPost(data);
+    navigate(paths.admin.dashboard);
     return data;
   };
 

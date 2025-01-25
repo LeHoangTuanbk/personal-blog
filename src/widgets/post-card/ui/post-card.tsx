@@ -21,7 +21,7 @@ export const PostCard = ({
       p={6}
       borderWidth="1px"
       borderRadius="lg"
-      minWidth="3xl"
+      w="4xl"
       _hover={{ shadow: 'md' }}
       transition="all 0.2s"
     >
