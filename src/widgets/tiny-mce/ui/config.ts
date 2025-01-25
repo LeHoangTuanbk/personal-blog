@@ -54,6 +54,7 @@ export const initConfig = {
     className: 'math-tex',
     configUrl: '/tinymce/plugins/@dimakorotkov/tinymce-mathjax/config.js',
   },
+  quickbars_insert_toolbar: false,
   content_style: `
       body { font-family:Helvetica,Arial,sans-serif; font-size:14px }
       .toc { background: #f9f9f9; padding: 20px; margin: 20px 0; }
