@@ -1,5 +1,6 @@
 import { supabaseClient } from '@shared/api/supabase-client';
 import { supabaseDBTables } from '@shared/api/supabase-client/index';
+import { getDate } from '@shared/lib';
 
 export const fetchPostsData = async () => {
   const { data, error } = await supabaseClient
@@ -32,7 +33,7 @@ export const fetchPostsData = async () => {
       id: post.id,
       title: post.title,
       description: post.description,
-      created_at: post.created_at,
+      created_at: getDate(post.created_at),
       reading_time: post.reading_time,
       slug: post.slug,
       status: post.status,
