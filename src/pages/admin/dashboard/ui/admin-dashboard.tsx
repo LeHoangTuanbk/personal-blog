@@ -1,6 +1,15 @@
-import { Text, Button, VStack, Divider, HStack, Box } from '@chakra-ui/react';
+import {
+  Text,
+  Button,
+  VStack,
+  Divider,
+  HStack,
+  Box,
+  Tag,
+} from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 
+import { PostStatusList } from '@entities/posts/model';
 import { useFetchPostsData } from '@pages/admin/dashboard/api';
 import { supabaseClient } from '@shared/api/supabase-client';
 import { paths } from '@shared/config/paths';
@@ -37,7 +46,18 @@ export const AdminDashboard = () => {
       {isLoading && !isError ? (
         <Box>Loading...</Box>
       ) : (
-        data?.map((post) => <PostCardContainer key={post.id} posts={post} />)
+        <VStack alignItems="flex-start" spacing={4}>
+          <HStack mb={4}>
+            <Tag key="total">Total</Tag>
+            {PostStatusList.map((status) => (
+              <Tag key={status}>{status}</Tag>
+            ))}
+          </HStack>
+
+          {data?.map((post) => (
+            <PostCardContainer key={post.id} posts={post} />
+          ))}
+        </VStack>
       )}
     </VStack>
   );
