@@ -23,7 +23,6 @@ export const AdminDashboard = () => {
   };
   const { data, isLoading, isError } = useFetchPostsData();
 
-  if (isError) return <div>Error</div>;
   return (
     <VStack alignItems="flex-start" spacing={4}>
       <Text fontSize="4xl" fontWeight="bold">
