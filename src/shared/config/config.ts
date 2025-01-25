@@ -25,6 +25,7 @@ interface IConfig {
   readonly projectName: string;
   readonly supabaseUrl: string;
   readonly supabaseAnonKey: string;
+  readonly supabaseBucketName: string;
 }
 
 class Config implements IConfig {
@@ -34,7 +35,7 @@ class Config implements IConfig {
   public readonly projectName: string;
   public readonly supabaseUrl: string;
   public readonly supabaseAnonKey: string;
-
+  public readonly supabaseBucketName: string;
   private constructor() {
     const parsedEnvDef = parseEnvDef(validateEnv('VITE_ENV'));
 
@@ -42,6 +43,7 @@ class Config implements IConfig {
     this.projectName = validateEnv('VITE_PROJECT_NAME');
     this.supabaseUrl = validateEnv('VITE_SUPABASE_URL');
     this.supabaseAnonKey = validateEnv('VITE_SUPABASE_ANON_KEY');
+    this.supabaseBucketName = validateEnv('VITE_SUPABASE_BUCKET_NAME');
   }
 
   public static getInstance(): IConfig {

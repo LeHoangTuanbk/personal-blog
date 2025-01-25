@@ -5,6 +5,7 @@ export const paths = {
   login: '/login',
   admin: {
     dashboard: '/admin/dashboard',
+    addPost: '/admin/add-post',
   },
   unauthorized: '/unauthorized',
 };

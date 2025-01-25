@@ -14,21 +14,21 @@ export type Database = {
           content: string;
           created_at: string;
           id: string;
-          slug: string | null;
+          slug: string;
           updated_at: string;
         };
         Insert: {
           content: string;
           created_at?: string;
-          id: string;
-          slug?: string | null;
+          id?: string;
+          slug: string;
           updated_at?: string;
         };
         Update: {
           content?: string;
           created_at?: string;
           id?: string;
-          slug?: string | null;
+          slug?: string;
           updated_at?: string;
         };
         Relationships: [];
@@ -38,7 +38,8 @@ export type Database = {
           content: string;
           created_at: string;
           id: string;
-          slug: string | null;
+          reading_time: number;
+          slug: string;
           status: Database['public']['Enums']['post_status'];
           title: string | null;
           updated_at: string;
@@ -47,18 +48,20 @@ export type Database = {
         Insert: {
           content: string;
           created_at?: string;
-          id: string;
-          slug?: string | null;
+          id?: string;
+          reading_time: number;
+          slug: string;
           status: Database['public']['Enums']['post_status'];
           title?: string | null;
           updated_at?: string;
-          user_id: string;
+          user_id?: string;
         };
         Update: {
           content?: string;
           created_at?: string;
           id?: string;
-          slug?: string | null;
+          reading_time?: number;
+          slug?: string;
           status?: Database['public']['Enums']['post_status'];
           title?: string | null;
           updated_at?: string;
@@ -109,7 +112,6 @@ export type Database = {
           created_at: string;
           email_address: string;
           id: string;
-          password: string;
           role: Database['public']['Enums']['user_role'];
           status: Database['public']['Enums']['user_status'];
           updated_at: string;
@@ -118,7 +120,6 @@ export type Database = {
           created_at?: string;
           email_address: string;
           id: string;
-          password: string;
           role: Database['public']['Enums']['user_role'];
           status: Database['public']['Enums']['user_status'];
           updated_at?: string;
@@ -127,7 +128,6 @@ export type Database = {
           created_at?: string;
           email_address?: string;
           id?: string;
-          password?: string;
           role?: Database['public']['Enums']['user_role'];
           status?: Database['public']['Enums']['user_status'];
           updated_at?: string;
