@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { supabaseClient } from '@shared/api/supabase-client';
 import { paths } from '@shared/config/paths';
 import { useToast } from '@shared/ui/components/toast-factory';
+import { PostCardContainer } from '@widgets/post-card/ui';
 export const AdminDashboard = () => {
   const navigate = useNavigate();
   const { successToast, errorToast } = useToast();
@@ -29,6 +30,7 @@ export const AdminDashboard = () => {
         <Button onClick={handleLogout}>Logout</Button>
       </HStack>
       <Divider borderColor="gray" borderWidth={1} />
+      <PostCardContainer />
     </VStack>
   );
 };
