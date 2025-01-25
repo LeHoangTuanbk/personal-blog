@@ -37,33 +37,36 @@ export type Database = {
         Row: {
           content: string;
           created_at: string;
+          description: string;
           id: string;
           reading_time: number;
           slug: string;
           status: Database['public']['Enums']['post_status'];
-          title: string | null;
+          title: string;
           updated_at: string;
           user_id: string;
         };
         Insert: {
           content: string;
           created_at?: string;
+          description?: string;
           id?: string;
-          reading_time: number;
+          reading_time?: number;
           slug: string;
           status: Database['public']['Enums']['post_status'];
-          title?: string | null;
+          title: string;
           updated_at?: string;
           user_id?: string;
         };
         Update: {
           content?: string;
           created_at?: string;
+          description?: string;
           id?: string;
           reading_time?: number;
           slug?: string;
           status?: Database['public']['Enums']['post_status'];
-          title?: string | null;
+          title?: string;
           updated_at?: string;
           user_id?: string;
         };

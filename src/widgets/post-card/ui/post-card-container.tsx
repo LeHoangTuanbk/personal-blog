@@ -1,13 +1,19 @@
+import { PostView } from '@entities/posts/model/types';
+
 import { PostCard } from './post-card';
 
-export const PostCardContainer = () => {
+type PostCardContainerProps = {
+  posts: PostView;
+};
+
+export const PostCardContainer = ({ posts }: PostCardContainerProps) => {
   return (
     <PostCard
-      title="Test"
-      description="Test"
-      labels={['test']}
-      date="2025-01-01"
-      readTime="1"
+      title={posts.title}
+      description={posts.description}
+      labels={posts.labels}
+      date={posts.created_at}
+      readTime={posts.reading_time.toString()}
     />
   );
 };

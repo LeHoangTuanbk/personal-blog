@@ -1,6 +1,7 @@
-import { Text, Button, VStack, Divider, HStack } from '@chakra-ui/react';
+import { Text, Button, VStack, Divider, HStack, Box } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 
+import { useFetchPostsData } from '@pages/admin/dashboard/api';
 import { supabaseClient } from '@shared/api/supabase-client';
 import { paths } from '@shared/config/paths';
 import { useToast } from '@shared/ui/components/toast-factory';
@@ -20,6 +21,9 @@ export const AdminDashboard = () => {
   const handleAddPost = () => {
     navigate(paths.admin.addPost);
   };
+  const { data, isLoading, isError } = useFetchPostsData();
+
+  if (isError) return <div>Error</div>;
   return (
     <VStack alignItems="flex-start" spacing={4}>
       <Text fontSize="4xl" fontWeight="bold">
@@ -30,7 +34,12 @@ export const AdminDashboard = () => {
         <Button onClick={handleLogout}>Logout</Button>
       </HStack>
       <Divider borderColor="gray" borderWidth={1} />
-      <PostCardContainer />
+      {isError && <Box>Error</Box>}
+      {isLoading && !isError ? (
+        <Box>Loading...</Box>
+      ) : (
+        data?.map((post) => <PostCardContainer key={post.id} posts={post} />)
+      )}
     </VStack>
   );
 };

@@ -15,3 +15,14 @@ export const PostStatusList = [
 ] as const;
 
 export type PostStatusType = (typeof PostStatusList)[number];
+
+export type PostView = {
+  id: string;
+  title: string;
+  description: string;
+  created_at: string;
+  reading_time: number;
+  slug: string;
+  status: PostStatusType;
+  labels: string[];
+};

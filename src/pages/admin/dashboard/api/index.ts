@@ -1,0 +1,1 @@
+export { useFetchPostsData } from './queries';
