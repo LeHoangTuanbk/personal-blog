@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Editor as TinyMCEEditor } from 'tinymce';
 
-import { extractImageSources } from '@shared/lib';
+import { extractImageSources } from '@shared/libs';
 import { useToastHook } from '@shared/ui/components/toast-factory';
 import { setupTOCPlugin } from '@widgets/tiny-mce/api';
 import { BlobInfo } from '@widgets/tiny-mce/api/data.types';

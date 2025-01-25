@@ -4,7 +4,7 @@ import {
   calculateReadingTime,
   createDescription,
   createSlugUrl,
-} from '@shared/lib';
+} from '@shared/libs';
 import { PostSchema } from '@widgets/post-form/api';
 
 export const submitPost = async (data: PostSchema) => {
