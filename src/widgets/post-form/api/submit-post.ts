@@ -11,9 +11,20 @@ export const submitPost = async (data: PostSchema) => {
       content: data.content,
       status: data.status,
       slug: createSlugUrl(data.title),
-    });
+    })
+    .select();
   if (error) {
     throw new Error(error.message);
   }
-  return postData;
+  if (postData) {
+    const { labels } = data;
+    const postId = postData[0].id;
+    const { error: postLabelsError } = await supabaseClient
+      .from(supabaseDBTables.posts_labels)
+      .insert(labels.map((label) => ({ post_id: postId, label_id: label })));
+    if (postLabelsError) {
+      throw new Error(postLabelsError.message);
+    }
+  }
+  return;
 };

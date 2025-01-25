@@ -20,4 +20,5 @@ export const supabaseDBTables = {
   posts: 'posts',
   users: 'users',
   labels: 'labels',
+  posts_labels: 'posts_labels',
 } as const;
