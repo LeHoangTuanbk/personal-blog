@@ -1,0 +1,1 @@
+export { PostCardContainer } from './ui';
