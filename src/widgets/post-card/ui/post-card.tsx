@@ -29,13 +29,42 @@ export const PostCard = ({
         {title}
       </Heading>
 
-      <Text color="gray.600" mb={4} noOfLines={2}>
+      <Text
+        color="gray.600"
+        mb={4}
+        sx={{
+          display: '-webkit-box',
+          WebkitLineClamp: '2',
+          WebkitBoxOrient: 'vertical',
+          overflow: 'hidden',
+          textAlignLast: 'left',
+          position: 'relative',
+          '&::after': {
+            content: '"... see more"',
+            position: 'absolute',
+            bottom: 0,
+            right: 0,
+            backgroundColor: 'white',
+            paddingLeft: 0,
+            color: 'blue.500',
+            cursor: 'pointer',
+          },
+        }}
+      >
         {description}
       </Text>
 
       <HStack spacing={2} mb={4}>
         {labels.map((label) => (
-          <Tag key={label} size="md" variant="outline" colorScheme="gray">
+          <Tag
+            key={label}
+            size="md"
+            variant="outline"
+            colorScheme="gray"
+            px={4}
+            py={1}
+            borderRadius="sm"
+          >
             #{label}
           </Tag>
         ))}
