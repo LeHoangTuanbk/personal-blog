@@ -38,7 +38,8 @@ export type Database = {
           content: string;
           created_at: string;
           id: string;
-          slug: string | null;
+          reading_time: number;
+          slug: string;
           status: Database['public']['Enums']['post_status'];
           title: string | null;
           updated_at: string;
@@ -48,7 +49,8 @@ export type Database = {
           content: string;
           created_at?: string;
           id?: string;
-          slug?: string | null;
+          reading_time: number;
+          slug: string;
           status: Database['public']['Enums']['post_status'];
           title?: string | null;
           updated_at?: string;
@@ -58,7 +60,8 @@ export type Database = {
           content?: string;
           created_at?: string;
           id?: string;
-          slug?: string | null;
+          reading_time?: number;
+          slug?: string;
           status?: Database['public']['Enums']['post_status'];
           title?: string | null;
           updated_at?: string;

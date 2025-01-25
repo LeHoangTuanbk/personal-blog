@@ -1,6 +1,6 @@
 import { supabaseDBTables } from '@shared/api/supabase-client';
 import { supabaseClient } from '@shared/api/supabase-client';
-import { createSlugUrl } from '@shared/lib';
+import { calculateReadingTime, createSlugUrl } from '@shared/lib';
 import { PostSchema } from '@widgets/post-form/api';
 
 export const submitPost = async (data: PostSchema) => {
@@ -11,6 +11,7 @@ export const submitPost = async (data: PostSchema) => {
       content: data.content,
       status: data.status,
       slug: createSlugUrl(data.title),
+      reading_time: calculateReadingTime(data.content),
     })
     .select();
   if (error) {
