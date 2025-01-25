@@ -1,7 +1,7 @@
 import { Editor } from '@tinymce/tinymce-react';
+import { Editor as TinyMCEEditor } from 'tinymce';
 
-import { setupTOCPlugin } from '@widgets/tiny-mce/api';
-import { useEditorHandler } from '@widgets/tiny-mce/api/use-editor-handler';
+import { useEditorHandler } from '@widgets/tiny-mce/api/';
 import { initConfig } from '@widgets/tiny-mce/ui/config';
 
 type TinyMceRichEditorProps = {
@@ -13,23 +13,20 @@ export const TinyMceRichEditor = ({
   initialValue,
   onChange,
 }: TinyMceRichEditorProps) => {
-  const { handleEditorChange, handleImageUpload } = useEditorHandler(
-    initialValue,
-    onChange,
-  );
+  const { handleEditorChange, handleImageUpload, handleEditorInit } =
+    useEditorHandler(initialValue, onChange);
+  const onInitHandler = (_: unknown, editor: TinyMCEEditor) =>
+    handleEditorInit(editor);
+
   return (
     <>
       <Editor
         tinymceScriptSrc="/tinymce/tinymce.min.js"
         initialValue={initialValue}
         licenseKey="gpl"
-        onInit={(_, editor) => {
-          setupTOCPlugin(editor);
-        }}
+        onInit={onInitHandler}
         init={{ ...initConfig, images_upload_handler: handleImageUpload }}
-        onEditorChange={(text) => {
-          handleEditorChange(text);
-        }}
+        onEditorChange={handleEditorChange}
       />
     </>
   );
