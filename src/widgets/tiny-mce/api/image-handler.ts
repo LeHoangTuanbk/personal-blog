@@ -6,7 +6,7 @@ import { config } from '@shared/config';
 import { BlobInfo } from './data.types';
 const richEditorImageFolder = 'rich-editor-images';
 
-export const handleImageUpload = async (blobInfo: BlobInfo) => {
+export const uploadImageToSupabaseStorage = async (blobInfo: BlobInfo) => {
   try {
     const blob = blobInfo.blob();
     const file = blob as File;
