@@ -1,8 +1,4 @@
--- For simple management, I just put in the migration file
-
--- INSERT INTO storage.buckets (id, name, public)
--- VALUES
---   ('file-archive', 'file-archive', true);
+-- Need to put here to make sure that the bucket file-archive is created
 
 CREATE POLICY "Allow public read on file-archive"
 ON storage.objects
