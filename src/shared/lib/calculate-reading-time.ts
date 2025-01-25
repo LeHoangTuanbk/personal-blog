@@ -1,3 +1,5 @@
+const adultReadingWordsPerMinute = 200;
+
 const extractTextFromHTML = (html: string) => {
   const parser = new DOMParser();
   const doc = parser.parseFromString(html, 'text/html');
@@ -6,7 +8,6 @@ const extractTextFromHTML = (html: string) => {
 
 export const calculateReadingTime = (html: string) => {
   const rawText = extractTextFromHTML(html);
-  const wordsPerMinute = 200;
   const wordCount = rawText.split(/\s+/).length;
-  return Math.ceil(wordCount / wordsPerMinute);
+  return Math.ceil(wordCount / adultReadingWordsPerMinute);
 };
