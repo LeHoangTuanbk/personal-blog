@@ -1,4 +1,4 @@
-import { PostSchema } from '@features/admin/add-post-form/api';
+import { PostSchemaType } from '@entities/posts/model';
 import { supabaseDBTables } from '@shared/api/supabase-client';
 import { supabaseClient } from '@shared/api/supabase-client';
 import {
@@ -7,7 +7,7 @@ import {
   createSlugUrl,
 } from '@shared/libs';
 
-export const submitPost = async (data: PostSchema) => {
+export const submitPost = async (data: PostSchemaType) => {
   const { data: postData, error } = await supabaseClient
     .from(supabaseDBTables.posts)
     .insert({

@@ -2,13 +2,13 @@ import { Box } from '@chakra-ui/react';
 import { MultiValue } from 'chakra-react-select';
 import { useNavigate } from 'react-router-dom';
 
+import { usePostForm } from '@entities/posts/api/use-post-form';
 import { PostStatus } from '@entities/posts/model';
+import { PostSchema } from '@entities/posts/model';
 import {
   useFetchLabels,
   useSubmitPost,
 } from '@features/admin/add-post-form/api';
-import { PostSchema } from '@features/admin/add-post-form/api';
-import { usePostForm } from '@features/admin/add-post-form/api/use-post-form';
 import { paths } from '@shared/config';
 import { PostForm } from '@widgets/post-form';
 

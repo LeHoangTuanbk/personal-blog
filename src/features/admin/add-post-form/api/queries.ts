@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
 
-import { PostSchema } from '@features/admin/add-post-form/api';
+import { PostSchemaType } from '@entities/posts/model';
 import { fetchLabels } from '@features/admin/add-post-form/api/fetch-labels';
 import { submitPost } from '@features/admin/add-post-form/api/submit-post';
 import { QueryKeys } from '@shared/api/query-client';
@@ -18,7 +18,7 @@ export const useFetchLabels = () => {
 export const useSubmitPost = () => {
   const { successToast, errorToast } = useToastHook();
   return useMutation({
-    mutationFn: async (data: PostSchema) => {
+    mutationFn: async (data: PostSchemaType) => {
       const response = await submitPost(data);
       return response;
     },
