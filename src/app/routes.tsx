@@ -2,6 +2,7 @@ import { Outlet, RouteObject } from 'react-router-dom';
 
 import { AddPostContainer } from '@pages/admin/add-post';
 import { AdminDashboardContainer } from '@pages/admin/dashboard';
+import { AdminEditPostContainer } from '@pages/admin/edit-post';
 import { AdminViewPostDetailContainer } from '@pages/admin/view-post-detail';
 import { HomePageContainer } from '@pages/home';
 import { LoginPageContainer } from '@pages/login/';
@@ -35,6 +36,10 @@ export const routes: RouteObject[] = [
           {
             element: <AdminViewPostDetailContainer />,
             path: paths.admin.viewPostDetail,
+          },
+          {
+            element: <AdminEditPostContainer />,
+            path: paths.admin.editPost,
           },
         ],
       },
