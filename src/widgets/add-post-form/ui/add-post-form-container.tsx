@@ -4,10 +4,10 @@ import { useNavigate } from 'react-router-dom';
 
 import { PostStatus } from '@entities/posts/model';
 import { paths } from '@shared/config';
-import { useFetchLabels, useSubmitPost } from '@widgets/post-form/api';
-import { PostSchema } from '@widgets/post-form/api';
-import { usePostForm } from '@widgets/post-form/api/use-post-form';
-import { PostForm } from '@widgets/post-form/ui/post-form';
+import { PostForm } from '@shared/ui/components';
+import { useFetchLabels, useSubmitPost } from '@widgets/add-post-form/api';
+import { PostSchema } from '@widgets/add-post-form/api';
+import { usePostForm } from '@widgets/add-post-form/api/use-post-form';
 
 export const PostFormContainer = () => {
   const { data: labels, isLoading, isError } = useFetchLabels();

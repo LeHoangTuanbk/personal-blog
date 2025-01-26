@@ -2,9 +2,9 @@ import { useMutation, useQuery } from '@tanstack/react-query';
 
 import { QueryKeys } from '@shared/api/query-client';
 import { useToastHook } from '@shared/ui/components/toast-factory';
-import { PostSchema } from '@widgets/post-form/api';
-import { fetchLabels } from '@widgets/post-form/api/fetch-labels';
-import { submitPost } from '@widgets/post-form/api/submit-post';
+import { PostSchema } from '@widgets/add-post-form/api';
+import { fetchLabels } from '@widgets/add-post-form/api/fetch-labels';
+import { submitPost } from '@widgets/add-post-form/api/submit-post';
 export const useFetchLabels = () => {
   return useQuery({
     queryKey: [QueryKeys.labels],

@@ -1,6 +1,6 @@
 import { VStack, Text } from '@chakra-ui/react';
 
-import { PostFormContainer } from '@widgets/post-form';
+import { PostFormContainer } from '@widgets/add-post-form';
 
 export const AddPost = () => {
   return (

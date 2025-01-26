@@ -5,7 +5,7 @@ import {
   createDescription,
   createSlugUrl,
 } from '@shared/libs';
-import { PostSchema } from '@widgets/post-form/api';
+import { PostSchema } from '@widgets/add-post-form/api';
 
 export const submitPost = async (data: PostSchema) => {
   const { data: postData, error } = await supabaseClient

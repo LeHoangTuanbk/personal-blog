@@ -6,3 +6,4 @@ export { ErrorStub } from './error-stub';
 export { ModalTemplate } from './modal-template';
 // export { PageStub } from './page-stub';
 export { AdminPageWrapper, AllPageWrapper } from './page-wrapper';
+export { PostForm } from './post-form';
