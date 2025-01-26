@@ -6,6 +6,7 @@ type PostCardProps = {
   labels: string[];
   date: string;
   readTime: string;
+  onClick: () => void;
 };
 
 export const PostCard = ({
@@ -14,6 +15,7 @@ export const PostCard = ({
   labels,
   date,
   readTime,
+  onClick,
 }: PostCardProps) => {
   return (
     <Box
@@ -24,6 +26,8 @@ export const PostCard = ({
       w="4xl"
       _hover={{ shadow: 'md' }}
       transition="all 0.2s"
+      onClick={onClick}
+      cursor="pointer"
     >
       <Heading as="h2" size="lg" mb={2} color="navy.900">
         {title}

@@ -6,6 +6,8 @@ export const paths = {
   admin: {
     dashboard: '/admin/dashboard',
     addPost: '/admin/add-post',
+    editPost: '/admin/edit-post',
+    viewPostDetail: '/admin/view-post-detail',
   },
   unauthorized: '/unauthorized',
 };
