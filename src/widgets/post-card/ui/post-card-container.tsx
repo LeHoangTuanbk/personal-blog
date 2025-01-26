@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { generatePath, useNavigate } from 'react-router-dom';
 
 import { PostView } from '@entities/posts/model/types';
 import { paths } from '@shared/config/paths';
@@ -13,7 +13,10 @@ export const PostCardContainer = ({ posts }: PostCardContainerProps) => {
   const navigate = useNavigate();
 
   const handleViewPostDetail = () => {
-    navigate(paths.admin.viewPostDetail);
+    const viewPostDetailPath = generatePath(paths.admin.viewPostDetail, {
+      slug: posts.slug,
+    });
+    navigate(viewPostDetailPath);
   };
 
   return (
