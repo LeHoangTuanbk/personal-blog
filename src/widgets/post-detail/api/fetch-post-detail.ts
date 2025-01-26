@@ -1,4 +1,5 @@
 import { supabaseClient } from '@shared/api/supabase-client';
+import { getDate } from '@shared/libs';
 
 export const fetchPostDetail = async (slug: string) => {
   const { data, error } = await supabaseClient
@@ -29,7 +30,7 @@ export const fetchPostDetail = async (slug: string) => {
     return {
       id: post.id,
       title: post.title,
-      created_at: post.created_at,
+      created_at: getDate(post.created_at),
       status: post.status,
       content: post.content,
       labels_content: post.posts_labels.map((label) => label.labels.content),
