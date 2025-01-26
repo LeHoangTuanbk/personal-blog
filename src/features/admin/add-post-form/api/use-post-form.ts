@@ -1,7 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 
-import { PostSchema } from '@widgets/add-post-form/api/schema';
+import { PostSchema } from '@features/admin/add-post-form/api/schema';
 
 export const usePostForm = ({
   defaultValues,

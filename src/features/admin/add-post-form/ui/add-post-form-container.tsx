@@ -3,13 +3,16 @@ import { MultiValue } from 'chakra-react-select';
 import { useNavigate } from 'react-router-dom';
 
 import { PostStatus } from '@entities/posts/model';
+import {
+  useFetchLabels,
+  useSubmitPost,
+} from '@features/admin/add-post-form/api';
+import { PostSchema } from '@features/admin/add-post-form/api';
+import { usePostForm } from '@features/admin/add-post-form/api/use-post-form';
 import { paths } from '@shared/config';
-import { useFetchLabels, useSubmitPost } from '@widgets/add-post-form/api';
-import { PostSchema } from '@widgets/add-post-form/api';
-import { usePostForm } from '@widgets/add-post-form/api/use-post-form';
 import { PostForm } from '@widgets/post-form';
 
-export const PostFormContainer = () => {
+export const AddPostFormContainer = () => {
   const { data: labels, isLoading, isError } = useFetchLabels();
   const {
     register,

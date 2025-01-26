@@ -20,7 +20,7 @@ import { UseFormRegister } from 'react-hook-form';
 import { FieldErrors } from 'react-hook-form';
 
 import { PostStatus, PostStatusList } from '@entities/posts/model';
-import { PostSchema } from '@widgets/add-post-form/api';
+import { PostSchema } from '@features/admin/add-post-form/api';
 import { TinyMceRichEditor } from '@widgets/tiny-mce';
 
 type PostFormProps = {
