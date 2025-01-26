@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { fetchPostDetail } from '@pages/admin/view-post-detail/api/fetch-post-detail';
 import { QueryKeys } from '@shared/api/query-client/query-keys';
+import { fetchPostDetail } from '@widgets/post-detail/api/fetch-post-detail';
 
 export const usePostDetailQuery = (slug: string) => {
   return useQuery({
