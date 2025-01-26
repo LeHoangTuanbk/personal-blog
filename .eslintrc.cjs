@@ -202,5 +202,13 @@ module.exports = {
         propElementValues: 'always', // Always use curly braces for dynamic prop values
       },
     ],
+    'max-lines': [
+      'error',
+      {
+        max: 250,
+        skipBlankLines: true,
+        skipComments: true,
+      },
+    ],
   },
 };

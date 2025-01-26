@@ -3,15 +3,15 @@
 
 echo "🐶 Starting Husky pre-commit check..."
 
-echo "📝 Running check-all script..."
-npm run check-all || {
-    echo "❌ check-all failed"
-    exit 1
-}
-
 echo "🔍 Running lint-staged..."
 npm run lint-staged || {
     echo "❌ lint-staged failed"
+    exit 1
+}
+
+echo "📝 Running check-all script..."
+npm run check-all || {
+    echo "❌ check-all failed"
     exit 1
 }
 
