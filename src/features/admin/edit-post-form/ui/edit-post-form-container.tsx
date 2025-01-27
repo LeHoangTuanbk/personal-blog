@@ -42,8 +42,12 @@ export const EditPostFormContainer = ({ slug }: EditPostFormContainerProps) => {
         status: initialData.status,
         content: initialData.content,
       });
+      setValue(
+        'labels',
+        initialData.labels.map((label) => label.id),
+      );
     }
-  }, [initialData, reset]);
+  }, [initialData, reset, setValue]);
 
   const { mutateAsync: editPost } = useEditPost();
   const { data: labels } = useFetchLabels();
