@@ -42,6 +42,7 @@ export const EditPostFormContainer = ({ slug }: EditPostFormContainerProps) => {
         status: initialData.status,
         content: initialData.content,
       });
+      // Todo: Bug when edit and then open edit that post again, the labels are not updated
       setValue(
         'labels',
         initialData.labels.map((label) => label.id),
