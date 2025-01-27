@@ -22,3 +22,7 @@ export const supabaseDBTables = {
   labels: 'labels',
   posts_labels: 'posts_labels',
 } as const;
+
+export const supabaseDBFunctions = {
+  updatePostWithLabels: 'update_post_with_labels',
+} as const;

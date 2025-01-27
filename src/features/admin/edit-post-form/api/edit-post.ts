@@ -1,4 +1,7 @@
-import { supabaseClient } from '@shared/api/supabase-client';
+import {
+  supabaseClient,
+  supabaseDBFunctions,
+} from '@shared/api/supabase-client';
 
 import { EditPostDataType } from './data.types';
 
@@ -9,7 +12,7 @@ export const editPost = async ({
   removedLabels,
 }: EditPostDataType) => {
   const { data: result, error } = await supabaseClient.rpc(
-    'update_post_with_labels',
+    supabaseDBFunctions.updatePostWithLabels,
     {
       p_post_id: id,
       p_post_data: {
