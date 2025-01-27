@@ -15,7 +15,7 @@ export const AdminViewPostDetail = () => {
 
   const handleEditPost = () => {
     const adminEditPostPath = generatePath(paths.admin.editPost, { slug });
-    navigate(adminEditPostPath);
+    window.open(adminEditPostPath, '_blank');
   };
 
   return (

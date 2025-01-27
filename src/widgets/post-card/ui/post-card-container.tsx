@@ -11,7 +11,6 @@ type PostCardContainerProps = {
 
 export const PostCardContainer = ({ posts }: PostCardContainerProps) => {
   const navigate = useNavigate();
-
   const handleViewPostDetail = () => {
     const viewPostDetailPath = generatePath(paths.admin.viewPostDetail, {
       slug: posts.slug,
@@ -24,8 +23,7 @@ export const PostCardContainer = ({ posts }: PostCardContainerProps) => {
     const editPostPath = generatePath(paths.admin.editPost, {
       slug: posts.slug,
     });
-
-    navigate(editPostPath);
+    window.open(editPostPath, '_blank');
   };
 
   return (
