@@ -24,7 +24,8 @@ export const fetchPostsData = async () => {
         )
       )
     `,
-    );
+    )
+    .order('created_at', { ascending: false });
   if (error) {
     throw new Error(error.message);
   }
