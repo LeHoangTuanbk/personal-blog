@@ -8,6 +8,7 @@ import { HomePageContainer } from '@pages/home';
 import { LoginPageContainer } from '@pages/login/';
 import { NotFoundPageContainer } from '@pages/not-found';
 import { paths } from '@shared/config';
+import { AdminProvider } from '@shared/context/admin-context';
 import { AdminPageWrapper } from '@shared/ui/components';
 
 import { AuthorizedGuard, NotAuthorizedGuard, NotFoundGuard } from './guards';
@@ -20,7 +21,9 @@ export const routes: RouteObject[] = [
         element: (
           <AuthorizedGuard>
             <AdminPageWrapper>
-              <Outlet />
+              <AdminProvider>
+                <Outlet />
+              </AdminProvider>
             </AdminPageWrapper>
           </AuthorizedGuard>
         ),
