@@ -1,1 +1,1 @@
-export { useFetchLabels, useSubmitPost } from './queries';
+export { useSubmitPost } from './queries';

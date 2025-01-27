@@ -29,6 +29,7 @@ type PostFormProps = {
   onSubmitPost: (data: PostSchema) => Promise<PostSchema>;
   errors: FieldErrors<PostSchema>;
   labelOptions: { value: string; label: string }[] | undefined;
+  selectedLabelOptions?: { value: string; label: string }[] | undefined;
   handleLabelChange: (
     selectedOptions: MultiValue<{ value: string; label: string }>,
   ) => void;
@@ -44,6 +45,7 @@ export const PostForm = ({
   onSubmitPost,
   errors,
   labelOptions,
+  selectedLabelOptions,
   handleLabelChange,
   handleContentChange,
   watch,
@@ -72,6 +74,7 @@ export const PostForm = ({
           placeholder="Select labels..."
           {...register('labels')}
           onChange={handleLabelChange}
+          defaultValue={selectedLabelOptions}
           menuPortalTarget={document.body}
           styles={{
             menuPortal: (base) => ({
