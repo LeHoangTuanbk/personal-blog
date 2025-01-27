@@ -1,19 +1,19 @@
-import { supabaseClient, supabaseDBTables } from '@shared/api/supabase-client';
-import { getDate } from '@shared/libs';
+import { supabaseClient } from '@shared/api/supabase-client';
+import { supabaseDBTables } from '@shared/api/supabase-client';
 
-export const fetchPostDetail = async (slug: string) => {
+export const fetchPostDataForEdit = async (slug: string) => {
   const { data, error } = await supabaseClient
     .from(supabaseDBTables.posts)
     .select(
       `
             id,
             title,
-            created_at,
             status,
             content,
             slug,
             posts_labels(
                 labels(
+                    id,
                     content,
                     slug
                 )
@@ -30,9 +30,9 @@ export const fetchPostDetail = async (slug: string) => {
     return {
       id: post.id,
       title: post.title,
-      created_at: getDate(post.created_at),
       status: post.status,
       content: post.content,
+      labels: post.posts_labels.map((label) => label.labels),
       labels_content: post.posts_labels.map((label) => label.labels.content),
       labels_slug: post.posts_labels.map((label) => label.labels.slug),
     };

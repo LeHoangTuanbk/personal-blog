@@ -4,7 +4,6 @@ import {
   FormControl,
   FormLabel,
   Input,
-  Box,
   FormErrorMessage,
 } from '@chakra-ui/react';
 import {
@@ -12,60 +11,47 @@ import {
   MultiValue,
   Select,
 } from 'chakra-react-select';
-import { useNavigate } from 'react-router-dom';
+import {
+  UseFormHandleSubmit,
+  UseFormSetValue,
+  UseFormWatch,
+} from 'react-hook-form';
+import { UseFormRegister } from 'react-hook-form';
+import { FieldErrors } from 'react-hook-form';
 
+import { PostSchema } from '@entities/posts';
 import { PostStatus, PostStatusList } from '@entities/posts/model';
-import { paths } from '@shared/config';
-import { useFetchLabels, useSubmitPost } from '@widgets/post-form/api';
-import { PostSchema } from '@widgets/post-form/api';
-import { usePostForm } from '@widgets/post-form/api/use-post-form';
 import { TinyMceRichEditor } from '@widgets/tiny-mce';
 
-export const PostForm = () => {
-  const { data: labels, isLoading, isError } = useFetchLabels();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    setValue,
-    watch,
-  } = usePostForm({
-    defaultValues: {
-      title: '',
-      labels: [],
-      status: PostStatus.Draft,
-      content: '',
-    },
-  });
-  const navigate = useNavigate();
-  const { mutateAsync: submitPost } = useSubmitPost();
-  const onSubmitPost = async (data: PostSchema) => {
-    await submitPost(data);
-    navigate(paths.admin.dashboard);
-    return data;
-  };
+type PostFormProps = {
+  register: UseFormRegister<PostSchema>;
+  handleSubmit: UseFormHandleSubmit<PostSchema>;
+  onSubmitPost: (data: PostSchema) => Promise<PostSchema>;
+  errors: FieldErrors<PostSchema>;
+  labelOptions: { value: string; label: string }[] | undefined;
+  selectedLabelOptions?: { value: string; label: string }[] | undefined;
+  handleLabelChange: (
+    selectedOptions: MultiValue<{ value: string; label: string }>,
+  ) => void;
+  handleContentChange: (text: string) => void;
+  watch: UseFormWatch<PostSchema>;
+  setValue: UseFormSetValue<PostSchema>;
+  initialContentValues?: string;
+};
 
-  const handleLabelChange = (
-    selectedOptions: MultiValue<{
-      value: string;
-      label: string;
-    }>,
-  ) => {
-    const selectedValues = selectedOptions.map((option) => option.value);
-    setValue('labels', selectedValues);
-  };
-
-  const handleContentChange = (text: string) => {
-    setValue('content', text);
-  };
-
-  const labelOptions = labels?.map((label) => ({
-    value: label.id,
-    label: label.content,
-  }));
-
-  if (isLoading) return <Box>Loading...</Box>;
-  if (isError) return <Box>Error</Box>;
+export const PostForm = ({
+  register,
+  handleSubmit,
+  onSubmitPost,
+  errors,
+  labelOptions,
+  selectedLabelOptions,
+  handleLabelChange,
+  handleContentChange,
+  watch,
+  setValue,
+  initialContentValues = '',
+}: PostFormProps) => {
   return (
     <VStack
       as="form"
@@ -88,6 +74,7 @@ export const PostForm = () => {
           placeholder="Select labels..."
           {...register('labels')}
           onChange={handleLabelChange}
+          defaultValue={selectedLabelOptions}
           menuPortalTarget={document.body}
           styles={{
             menuPortal: (base) => ({
@@ -130,7 +117,10 @@ export const PostForm = () => {
       </FormControl>
       <FormControl isInvalid={!!errors.content}>
         <FormLabel>Content</FormLabel>
-        <TinyMceRichEditor initialValue="" onChange={handleContentChange} />
+        <TinyMceRichEditor
+          initialValue={initialContentValues}
+          onChange={handleContentChange}
+        />
         {errors.content && (
           <FormErrorMessage>{errors.content.message}</FormErrorMessage>
         )}

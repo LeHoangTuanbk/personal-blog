@@ -19,6 +19,15 @@ export const PostCardContainer = ({ posts }: PostCardContainerProps) => {
     navigate(viewPostDetailPath);
   };
 
+  const handleEditPost = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    const editPostPath = generatePath(paths.admin.editPost, {
+      slug: posts.slug,
+    });
+
+    navigate(editPostPath);
+  };
+
   return (
     <PostCard
       title={posts.title}
@@ -27,6 +36,7 @@ export const PostCardContainer = ({ posts }: PostCardContainerProps) => {
       date={posts.created_at}
       readTime={posts.reading_time.toString()}
       onClick={handleViewPostDetail}
+      onEdit={handleEditPost}
     />
   );
 };

@@ -1,0 +1,1 @@
+export { EditPostFormContainer } from './ui';

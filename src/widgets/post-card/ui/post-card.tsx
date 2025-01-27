@@ -1,4 +1,6 @@
-import { Box, Heading, Text, HStack, Tag } from '@chakra-ui/react';
+import { Box, Heading, Text, HStack, Tag, Button } from '@chakra-ui/react';
+
+import { useAdminContext } from '@shared/context/admin-context';
 
 type PostCardProps = {
   title: string;
@@ -7,6 +9,7 @@ type PostCardProps = {
   date: string;
   readTime: string;
   onClick: () => void;
+  onEdit: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 export const PostCard = ({
@@ -16,7 +19,10 @@ export const PostCard = ({
   date,
   readTime,
   onClick,
+  onEdit,
 }: PostCardProps) => {
+  const { adminPage } = useAdminContext();
+
   return (
     <Box
       as="article"
@@ -29,9 +35,16 @@ export const PostCard = ({
       onClick={onClick}
       cursor="pointer"
     >
-      <Heading as="h2" size="lg" mb={2} color="navy.900">
-        {title}
-      </Heading>
+      <Box display="flex" justifyContent="space-between">
+        <Heading as="h2" size="lg" mb={2} color="navy.900">
+          {title}
+        </Heading>
+        {adminPage && (
+          <Button colorScheme="blue" size="sm" onClick={onEdit}>
+            Edit
+          </Button>
+        )}
+      </Box>
 
       <Text
         color="gray.600"

@@ -35,9 +35,9 @@ export const initConfig = {
     'visualchars',
     'wordcount',
   ],
-  external_plugins: {
-    mathjax: '/tinymce/plugins/@dimakorotkov/tinymce-mathjax/plugin.min.js',
-  },
+  // external_plugins: {
+  //   mathjax: '/tinymce/plugins/@dimakorotkov/tinymce-mathjax/plugin.min.js',
+  // },
   toolbar:
     'undo redo | blocks fontfamily fontsize | fullscreen | toc | ' +
     'bold italic underline strikethrough | link image media table | ' +

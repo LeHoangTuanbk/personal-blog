@@ -2,11 +2,13 @@ import { Outlet, RouteObject } from 'react-router-dom';
 
 import { AddPostContainer } from '@pages/admin/add-post';
 import { AdminDashboardContainer } from '@pages/admin/dashboard';
+import { AdminEditPostContainer } from '@pages/admin/edit-post';
 import { AdminViewPostDetailContainer } from '@pages/admin/view-post-detail';
 import { HomePageContainer } from '@pages/home';
 import { LoginPageContainer } from '@pages/login/';
 import { NotFoundPageContainer } from '@pages/not-found';
 import { paths } from '@shared/config';
+import { AdminProvider } from '@shared/context/admin-context';
 import { AdminPageWrapper } from '@shared/ui/components';
 
 import { AuthorizedGuard, NotAuthorizedGuard, NotFoundGuard } from './guards';
@@ -19,7 +21,9 @@ export const routes: RouteObject[] = [
         element: (
           <AuthorizedGuard>
             <AdminPageWrapper>
-              <Outlet />
+              <AdminProvider>
+                <Outlet />
+              </AdminProvider>
             </AdminPageWrapper>
           </AuthorizedGuard>
         ),
@@ -35,6 +39,10 @@ export const routes: RouteObject[] = [
           {
             element: <AdminViewPostDetailContainer />,
             path: paths.admin.viewPostDetail,
+          },
+          {
+            element: <AdminEditPostContainer />,
+            path: paths.admin.editPost,
           },
         ],
       },
