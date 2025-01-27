@@ -38,7 +38,7 @@ export const EditPostFormContainer = ({ slug }: EditPostFormContainerProps) => {
     if (initialData) {
       reset({
         title: initialData.title,
-        labels: initialData.labels_slug,
+        labels: initialData.labels.map((label) => label.id),
         status: initialData.status,
         content: initialData.content,
       });
@@ -63,7 +63,6 @@ export const EditPostFormContainer = ({ slug }: EditPostFormContainerProps) => {
     const removedLabels = originalLabelIds.filter(
       (labelId) => !currentLabelIds.includes(labelId),
     );
-
     await editPost({
       id: initialData?.id || '',
       data,
