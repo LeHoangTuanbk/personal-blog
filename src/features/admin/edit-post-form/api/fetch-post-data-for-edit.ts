@@ -13,6 +13,7 @@ export const fetchPostDataForEdit = async (slug: string) => {
             slug,
             posts_labels(
                 labels(
+                    id,
                     content,
                     slug
                 )
@@ -31,6 +32,7 @@ export const fetchPostDataForEdit = async (slug: string) => {
       title: post.title,
       status: post.status,
       content: post.content,
+      labels: post.posts_labels.map((label) => label.labels),
       labels_content: post.posts_labels.map((label) => label.labels.content),
       labels_slug: post.posts_labels.map((label) => label.labels.slug),
     };

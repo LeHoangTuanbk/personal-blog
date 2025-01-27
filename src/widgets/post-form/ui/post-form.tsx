@@ -35,6 +35,7 @@ type PostFormProps = {
   handleContentChange: (text: string) => void;
   watch: UseFormWatch<PostSchema>;
   setValue: UseFormSetValue<PostSchema>;
+  initialContentValues?: string;
 };
 
 export const PostForm = ({
@@ -47,6 +48,7 @@ export const PostForm = ({
   handleContentChange,
   watch,
   setValue,
+  initialContentValues = '',
 }: PostFormProps) => {
   return (
     <VStack
@@ -112,7 +114,10 @@ export const PostForm = ({
       </FormControl>
       <FormControl isInvalid={!!errors.content}>
         <FormLabel>Content</FormLabel>
-        <TinyMceRichEditor initialValue="" onChange={handleContentChange} />
+        <TinyMceRichEditor
+          initialValue={initialContentValues}
+          onChange={handleContentChange}
+        />
         {errors.content && (
           <FormErrorMessage>{errors.content.message}</FormErrorMessage>
         )}
