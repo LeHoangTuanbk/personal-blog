@@ -14,6 +14,7 @@ module.exports = {
     'src/shared/api/apollo-client/generated/',
     'plop-templates/',
     'public/tinymce/**',
+    '/src/shared/api/supabase-client/database.types.ts',
   ],
   parser: '@typescript-eslint/parser',
   settings: {

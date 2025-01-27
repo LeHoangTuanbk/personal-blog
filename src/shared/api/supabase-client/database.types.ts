@@ -45,6 +45,7 @@ export type Database = {
           title: string;
           updated_at: string;
           user_id: string;
+          views: number | null;
         };
         Insert: {
           content: string;
@@ -57,6 +58,7 @@ export type Database = {
           title: string;
           updated_at?: string;
           user_id?: string;
+          views?: number | null;
         };
         Update: {
           content?: string;
@@ -69,6 +71,7 @@ export type Database = {
           title?: string;
           updated_at?: string;
           user_id?: string;
+          views?: number | null;
         };
         Relationships: [
           {
@@ -142,7 +145,15 @@ export type Database = {
       [_ in never]: never;
     };
     Functions: {
-      [_ in never]: never;
+      update_post_with_labels: {
+        Args: {
+          p_post_id: string;
+          p_post_data: Json;
+          p_added_label_ids: string[];
+          p_removed_label_ids: string[];
+        };
+        Returns: undefined;
+      };
     };
     Enums: {
       post_status: 'draft' | 'published' | 'archived';

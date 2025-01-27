@@ -1,15 +1,15 @@
 import { Box } from '@chakra-ui/react';
 import { MultiValue } from 'chakra-react-select';
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import { useFetchLabels } from '@entities/labels';
 import { usePostForm } from '@entities/posts/api/use-post-form';
 import { PostSchema } from '@entities/posts/model/schema';
 import { PostStatus } from '@entities/posts/model/types';
-import { useSubmitPost } from '@features/admin/add-post-form/api/queries';
-import { usePostDataForEdit } from '@features/admin/edit-post-form/api/queries';
-import { paths } from '@shared/config/paths';
+import {
+  useEditPost,
+  usePostDataForEdit,
+} from '@features/admin/edit-post-form/api/queries';
 import { PostForm } from '@widgets/post-form/ui/post-form';
 
 type EditPostFormContainerProps = {
@@ -17,7 +17,7 @@ type EditPostFormContainerProps = {
 };
 
 export const EditPostFormContainer = ({ slug }: EditPostFormContainerProps) => {
-  const { data, isLoading, isError } = usePostDataForEdit(slug);
+  const { data: initialData, isLoading, isError } = usePostDataForEdit(slug);
   const {
     register,
     handleSubmit,
@@ -35,22 +35,42 @@ export const EditPostFormContainer = ({ slug }: EditPostFormContainerProps) => {
   });
 
   useEffect(() => {
-    if (data) {
+    if (initialData) {
       reset({
-        title: data.title,
-        labels: data.labels_slug,
-        status: data.status,
-        content: data.content,
+        title: initialData.title,
+        labels: initialData.labels_slug,
+        status: initialData.status,
+        content: initialData.content,
       });
     }
-  }, [data, reset]);
+  }, [initialData, reset]);
 
-  const navigate = useNavigate();
-  const { mutateAsync: submitPost } = useSubmitPost();
+  const { mutateAsync: editPost } = useEditPost();
   const { data: labels } = useFetchLabels();
+  const selectedLabelOptions = initialData?.labels?.map((label) => ({
+    value: label.id,
+    label: label.content,
+  }));
   const onSubmitPost = async (data: PostSchema) => {
-    await submitPost(data);
-    navigate(paths.admin.dashboard);
+    const currentLabelIds = data.labels;
+    const originalLabelIds =
+      selectedLabelOptions?.map((label) => label.value) || [];
+
+    const addedLabels = currentLabelIds.filter(
+      (labelId) => !originalLabelIds.includes(labelId),
+    );
+
+    const removedLabels = originalLabelIds.filter(
+      (labelId) => !currentLabelIds.includes(labelId),
+    );
+
+    await editPost({
+      id: initialData?.id || '',
+      data,
+      addedLabels,
+      removedLabels,
+    });
+
     return data;
   };
 
@@ -73,11 +93,6 @@ export const EditPostFormContainer = ({ slug }: EditPostFormContainerProps) => {
     label: label.content,
   }));
 
-  const selectedLabelOptions = data?.labels?.map((label) => ({
-    value: label.id,
-    label: label.content,
-  }));
-
   if (isLoading) return <Box>Loading...</Box>;
   if (isError) return <Box>Error</Box>;
 
@@ -92,7 +107,7 @@ export const EditPostFormContainer = ({ slug }: EditPostFormContainerProps) => {
       handleContentChange={handleContentChange}
       watch={watch}
       setValue={setValue}
-      initialContentValues={data?.content}
+      initialContentValues={initialData?.content}
       selectedLabelOptions={selectedLabelOptions}
     />
   );
