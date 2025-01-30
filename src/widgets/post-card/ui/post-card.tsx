@@ -32,6 +32,7 @@ export const PostCard = ({
       transition="all 0.2s"
       onClick={onClick}
       cursor="pointer"
+      bg="bg.secondary"
     >
       <Box display="flex" justifyContent="space-between">
         <Heading as="h2" size="lg" mb={2} color="navy.900">

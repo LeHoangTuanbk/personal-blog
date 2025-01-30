@@ -15,6 +15,10 @@ export const ProfileCard = () => {
         />
       </Box>
       <Text>Tuan Le Hoang</Text>
+      <Text>Software Engineer</Text>
+      <Text>
+        Giữ sức khoẻ thể chất và tinh thần để chinh phục các mục tiêu cao hơn
+      </Text>
     </Box>
   );
 };

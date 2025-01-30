@@ -6,8 +6,8 @@ export const theme = extendTheme({
       primary: '#FFFFFF',
     },
     bg: {
-      primary: '#F4F6F8',
-      secondary: '#F7FAFC',
+      primary: '#FBFBFB',
+      secondary: '#FFFFFF',
     },
     button: {
       primary: '#81D4FA',
