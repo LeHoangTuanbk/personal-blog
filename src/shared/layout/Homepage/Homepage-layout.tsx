@@ -1,4 +1,4 @@
-import { Grid, GridItem, Container, Show, Divider } from '@chakra-ui/react';
+import { Grid, GridItem, Show, Divider, Box } from '@chakra-ui/react';
 
 type HomepageLayoutProps = {
   sideBar: React.ReactNode;
@@ -7,22 +7,15 @@ type HomepageLayoutProps = {
 
 export const HomepageLayout = ({ sideBar, children }: HomepageLayoutProps) => {
   return (
-    <Container maxW="container.xl">
+    <Box maxW="container.xl">
       <Grid
         templateColumns={{
           base: '1fr',
-          lg: 'repeat(24, 1fr)',
+          lg: '200px 1fr',
         }}
-        gap={4}
+        gap={6}
       >
-        <GridItem
-          colSpan={{
-            base: 'auto',
-            lg: 2,
-          }}
-        >
-          {sideBar}
-        </GridItem>
+        <GridItem>{sideBar}</GridItem>
         <Show below="lg">
           <Divider
             orientation="horizontal"
@@ -30,15 +23,8 @@ export const HomepageLayout = ({ sideBar, children }: HomepageLayoutProps) => {
             borderColor="gray.800"
           />
         </Show>
-        <GridItem
-          colSpan={{
-            base: 'auto',
-            lg: 20,
-          }}
-        >
-          {children}
-        </GridItem>
+        <GridItem>{children}</GridItem>
       </Grid>
-    </Container>
+    </Box>
   );
 };

@@ -1,1 +1,1 @@
-export { HomepageLayout } from './Homepage/Homepage-layout';
+export { HomepageLayout } from './homepage/homepage-layout';
