@@ -1,5 +1,6 @@
 export const paths = {
   home: '/',
+  post: '/post/:slug',
   notFound: '/404',
   auth: '/auth',
   login: '/login',

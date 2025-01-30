@@ -2,6 +2,7 @@ import { generatePath, useNavigate } from 'react-router-dom';
 
 import { PostView } from '@entities/posts/model/types';
 import { paths } from '@shared/config/paths';
+import { useAdminContext } from '@shared/context/admin-context';
 
 import { PostCard } from './post-card';
 
@@ -11,11 +12,19 @@ type PostCardContainerProps = {
 
 export const PostCardContainer = ({ posts }: PostCardContainerProps) => {
   const navigate = useNavigate();
+  const { adminPage } = useAdminContext();
   const handleViewPostDetail = () => {
-    const viewPostDetailPath = generatePath(paths.admin.viewPostDetail, {
-      slug: posts.slug,
-    });
-    navigate(viewPostDetailPath);
+    if (adminPage) {
+      const viewPostDetailPath = generatePath(paths.admin.viewPostDetail, {
+        slug: posts.slug,
+      });
+      navigate(viewPostDetailPath);
+    } else {
+      const viewPostDetailPath = generatePath(paths.post, {
+        slug: posts.slug,
+      });
+      navigate(viewPostDetailPath);
+    }
   };
 
   const handleEditPost = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -35,6 +44,7 @@ export const PostCardContainer = ({ posts }: PostCardContainerProps) => {
       readTime={posts.reading_time.toString()}
       onClick={handleViewPostDetail}
       onEdit={handleEditPost}
+      isAdminPage={adminPage}
     />
   );
 };
