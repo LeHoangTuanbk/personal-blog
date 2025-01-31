@@ -10,10 +10,13 @@ export const Sidebar = () => {
       flexDirection="column"
       gap={4}
       height="100%"
-      px={16}
+      px={2}
       py={2}
       bg="bg.secondary"
       boxShadow="1px 0 10px rgba(0, 0, 0, 0.05)"
+      align="stretch"
+      width="100%"
+      h="100vh"
     >
       <ProfileCard />
       <LabelListContainer />
