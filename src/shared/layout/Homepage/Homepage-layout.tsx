@@ -11,11 +11,11 @@ export const HomepageLayout = ({ sideBar, children }: HomepageLayoutProps) => {
       <Grid
         templateColumns={{
           base: '1fr',
-          lg: '250px 1fr',
+          lg: '270px 1fr',
         }}
-        gap={10}
+        gap={{ base: 4, lg: 10 }}
       >
-        <GridItem>{sideBar}</GridItem>
+        <GridItem width={{ base: 'full', lg: '270px' }}>{sideBar}</GridItem>
         <Show below="lg">
           <Divider
             orientation="horizontal"
