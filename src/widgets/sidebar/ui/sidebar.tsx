@@ -7,8 +7,8 @@ export const Sidebar = () => {
   return (
     <VStack
       display="flex"
-      position="fixed" // Thêm position fixed
-      left={0} // Cố định ở bên trái
+      position="fixed"
+      left={0}
       top={0}
       flexDirection="column"
       gap={4}
@@ -17,7 +17,6 @@ export const Sidebar = () => {
       bg="bg.secondary"
       boxShadow="1px 0 10px rgba(0, 0, 0, 0.05)"
       align="stretch"
-      width="100%"
       h="100vh"
       w="250px"
     >
