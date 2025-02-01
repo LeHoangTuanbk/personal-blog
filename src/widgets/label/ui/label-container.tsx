@@ -2,17 +2,18 @@ import { generatePath, useNavigate } from 'react-router-dom';
 
 import { paths } from '@shared/config/paths';
 import { Label } from '@widgets/label/ui/label';
+import { LabelWithPostCount } from '@widgets/label-list/api';
 
 type LabelContainerProps = {
-  label: string;
+  label: LabelWithPostCount;
 };
 
 export const LabelContainer = ({ label }: LabelContainerProps) => {
   const navigate = useNavigate();
   const handleClick = () => {
-    const url = generatePath(paths.home.label, { label });
+    const url = generatePath(paths.home.label, { label: label.content });
     navigate(url);
   };
 
-  return <Label key={label} label={label} onClick={handleClick} />;
+  return <Label key={label.id} label={label.content} onClick={handleClick} />;
 };

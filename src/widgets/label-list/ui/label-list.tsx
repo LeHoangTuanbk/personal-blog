@@ -1,13 +1,16 @@
-import { Box } from '@chakra-ui/react';
+import { Wrap, WrapItem } from '@chakra-ui/react';
 
 import { LabelContainer } from '@widgets/label/ui/label-container';
 import { LabelWithPostCount } from '@widgets/label-list/api';
+
 export const LabelList = ({ labels }: { labels: LabelWithPostCount[] }) => {
   return (
-    <Box>
+    <Wrap spacing={3}>
       {labels.map((label) => (
-        <LabelContainer key={label.id} label={label.content} />
+        <WrapItem key={label.id}>
+          <LabelContainer key={label.id} label={label} />
+        </WrapItem>
       ))}
-    </Box>
+    </Wrap>
   );
 };
