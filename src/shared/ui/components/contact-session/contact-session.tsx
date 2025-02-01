@@ -1,4 +1,4 @@
-import { AbsoluteCenter, Box, Divider, HStack } from '@chakra-ui/react';
+import { AbsoluteCenter, Box, Divider, HStack, Hide } from '@chakra-ui/react';
 import {
   FaFacebook,
   FaGithub,
@@ -11,7 +11,9 @@ export const ContactSession = () => {
   return (
     <Box marginTop="auto">
       <Box position="relative" mb={6}>
-        <Divider borderColor="black" borderWidth={1} />
+        <Hide below="lg">
+          <Divider borderColor="black" borderWidth={1} />
+        </Hide>
         <AbsoluteCenter bg="white" px="4">
           Contact
         </AbsoluteCenter>
