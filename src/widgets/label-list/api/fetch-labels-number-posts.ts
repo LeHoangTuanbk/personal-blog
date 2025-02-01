@@ -6,10 +6,13 @@ export const fetchLabelsNumberPosts = async () => {
     .from(supabaseDBTables.labels)
     .select(
       `
-        *, 
-        posts_count: posts_labels(count)
-        `,
+        *,
+        posts: posts_labels(
+            posts!inner(id)
+        )
+    `,
     )
+    .eq('posts_labels.posts.status', 'published')
     .order('content', { ascending: true });
   if (error) {
     throw new Error(error.message);

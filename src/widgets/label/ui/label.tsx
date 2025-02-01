@@ -2,23 +2,23 @@ import { Tag } from '@chakra-ui/react';
 
 type LabelProps = {
   label: string;
+  count: number;
   onClick: () => void;
 };
 
-export const Label = ({ label, onClick }: LabelProps) => {
+export const Label = ({ label, count, onClick }: LabelProps) => {
   return (
     <Tag
       key={label}
       size="md"
       variant="outline"
-      colorScheme="gray"
       px={4}
       py={1}
       borderRadius="sm"
       cursor="pointer"
       onClick={onClick}
     >
-      #{label}
+      #{label} ({count})
     </Tag>
   );
 };

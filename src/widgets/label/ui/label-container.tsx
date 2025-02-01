@@ -15,5 +15,12 @@ export const LabelContainer = ({ label }: LabelContainerProps) => {
     navigate(url);
   };
 
-  return <Label key={label.id} label={label.content} onClick={handleClick} />;
+  return (
+    <Label
+      key={label.id}
+      label={label.content}
+      count={label.posts.length}
+      onClick={handleClick}
+    />
+  );
 };
