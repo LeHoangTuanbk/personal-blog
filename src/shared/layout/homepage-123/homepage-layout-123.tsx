@@ -1,4 +1,4 @@
-import { Grid, GridItem, Show, Divider, Box } from '@chakra-ui/react';
+import { Grid, GridItem, Box } from '@chakra-ui/react';
 
 type HomepageLayoutProps = {
   sideBar: React.ReactNode;
@@ -11,18 +11,12 @@ export const HomepageLayout = ({ sideBar, children }: HomepageLayoutProps) => {
       <Grid
         templateColumns={{
           base: '1fr',
-          lg: '250px 1fr',
+          xl: '270px 1fr',
         }}
-        gap={10}
+        gap={{ base: 4, xl: 10 }}
       >
         <GridItem>{sideBar}</GridItem>
-        <Show below="lg">
-          <Divider
-            orientation="horizontal"
-            borderWidth="1px"
-            borderColor="gray.800"
-          />
-        </Show>
+
         <GridItem>{children}</GridItem>
       </Grid>
     </Box>

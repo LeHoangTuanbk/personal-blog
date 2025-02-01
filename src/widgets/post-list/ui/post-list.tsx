@@ -8,7 +8,7 @@ export const PostList = () => {
   if (isLoading) return <Spinner />;
   if (isError) return <Box>Error loading posts. Please try again later.</Box>;
   return (
-    <VStack alignItems="flex-start" spacing={4}>
+    <VStack alignItems={{ base: 'center', xl: 'flex-start' }} spacing={4}>
       {data?.map((post) => <PostCardContainer key={post.id} posts={post} />)}
     </VStack>
   );

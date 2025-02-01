@@ -1,4 +1,4 @@
-import { AbsoluteCenter, Box, Divider, HStack } from '@chakra-ui/react';
+import { AbsoluteCenter, Box, Divider, HStack, Hide } from '@chakra-ui/react';
 import {
   FaFacebook,
   FaGithub,
@@ -10,12 +10,15 @@ import { Link } from 'react-router-dom';
 export const ContactSession = () => {
   return (
     <Box marginTop="auto">
-      <Box position="relative" mb={6}>
-        <Divider borderColor="black" borderWidth={1} />
-        <AbsoluteCenter bg="white" px="4">
-          Contact
-        </AbsoluteCenter>
-      </Box>
+      <Hide below="xl">
+        <Box position="relative" mb={6}>
+          <Divider borderColor="black" borderWidth={1} />
+
+          <AbsoluteCenter bg="white" px="4">
+            Contact
+          </AbsoluteCenter>
+        </Box>
+      </Hide>
       <HStack justify="center" gap={4} fontSize="3xl">
         <Link to="https://www.linkedin.com/in/le-hoang-tuan-bk" target="_blank">
           <FaLinkedin />
