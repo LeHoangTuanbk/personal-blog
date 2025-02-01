@@ -5,6 +5,7 @@ import { AdminDashboardContainer } from '@pages/admin/dashboard';
 import { AdminEditPostContainer } from '@pages/admin/edit-post';
 import { AdminViewPostDetailContainer } from '@pages/admin/view-post-detail';
 import { HomePageContainer } from '@pages/home';
+import { HomeLabelPostsContainer } from '@pages/home-label-posts';
 import { HomePostDetailContainer } from '@pages/home-post-detail';
 import { LoginPageContainer } from '@pages/login/';
 import { NotFoundPageContainer } from '@pages/not-found';
@@ -70,6 +71,10 @@ export const routes: RouteObject[] = [
               {
                 element: <HomePostDetailContainer />,
                 path: paths.home.post,
+              },
+              {
+                element: <HomeLabelPostsContainer />,
+                path: paths.home.label,
               },
             ],
           },

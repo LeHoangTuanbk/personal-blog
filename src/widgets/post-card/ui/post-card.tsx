@@ -55,16 +55,6 @@ export const PostCard = ({
           overflow: 'hidden',
           textAlignLast: 'left',
           position: 'relative',
-          '&::after': {
-            content: '"... see more"',
-            position: 'absolute',
-            bottom: 0,
-            right: 0,
-            backgroundColor: 'white',
-            paddingLeft: 0,
-            color: 'blue.500',
-            cursor: 'pointer',
-          },
         }}
       >
         {description}

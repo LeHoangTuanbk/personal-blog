@@ -5,4 +5,5 @@ export const QueryKeys = {
   postDetail: 'postDetail',
   postDataForEdit: 'postDataForEdit',
   publishedPosts: 'publishedPosts',
+  labelPosts: 'labelPosts',
 } as const;

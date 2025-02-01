@@ -1,6 +1,7 @@
 import { VStack } from '@chakra-ui/react';
 
 import { ContactSession, ProfileCard } from '@shared/ui/components';
+import { HomeLabelContainer } from '@widgets/home-label/ui/home-label-container';
 import { LabelListContainer } from '@widgets/label-list/ui/label-list-container';
 
 export const Sidebar = () => {
@@ -20,6 +21,7 @@ export const Sidebar = () => {
       overflowY="auto"
     >
       <ProfileCard />
+      <HomeLabelContainer />
       <LabelListContainer />
       <ContactSession />
     </VStack>
