@@ -10,14 +10,15 @@ import { Link } from 'react-router-dom';
 export const ContactSession = () => {
   return (
     <Box marginTop="auto">
-      <Box position="relative" mb={6}>
-        <Hide below="lg">
+      <Hide below="lg">
+        <Box position="relative" mb={6}>
           <Divider borderColor="black" borderWidth={1} />
-        </Hide>
-        <AbsoluteCenter bg="white" px="4">
-          Contact
-        </AbsoluteCenter>
-      </Box>
+
+          <AbsoluteCenter bg="white" px="4">
+            Contact
+          </AbsoluteCenter>
+        </Box>
+      </Hide>
       <HStack justify="center" gap={4} fontSize="3xl">
         <Link to="https://www.linkedin.com/in/le-hoang-tuan-bk" target="_blank">
           <FaLinkedin />

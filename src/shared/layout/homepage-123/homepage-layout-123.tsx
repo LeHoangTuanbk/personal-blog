@@ -15,7 +15,7 @@ export const HomepageLayout = ({ sideBar, children }: HomepageLayoutProps) => {
         }}
         gap={{ base: 4, lg: 10 }}
       >
-        <GridItem width={{ base: 'full', lg: '270px' }}>{sideBar}</GridItem>
+        <GridItem>{sideBar}</GridItem>
 
         <GridItem>{children}</GridItem>
       </Grid>
