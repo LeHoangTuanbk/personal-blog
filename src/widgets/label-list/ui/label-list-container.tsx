@@ -9,7 +9,7 @@ export const LabelListContainer = () => {
   if (error) return <Box>Error loading labels</Box>;
   if (!data) return <Box>No labels found</Box>;
   return (
-    <Box mt="auto">
+    <Box mt="auto" mx="auto" w="100%" display="flex" justifyContent="center">
       <LabelList labels={data} />
     </Box>
   );

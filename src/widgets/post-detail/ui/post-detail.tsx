@@ -12,7 +12,7 @@ export const PostDetail = ({ data }: PostDetailProps) => {
   const { adminPage: isAdminPage } = useAdminContext();
 
   return (
-    <VStack spacing={4} textAlign="left" alignItems="flex-start" my={10}>
+    <VStack spacing={4} textAlign="left" alignItems="flex-start" my={10} mx={4}>
       <VStack spacing={2} w="full">
         <Text as="h1" fontSize="2xl" fontWeight="bold">
           {data.title}

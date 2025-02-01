@@ -5,7 +5,7 @@ import { LabelWithPostCount } from '@widgets/label-list/api';
 
 export const LabelList = ({ labels }: { labels: LabelWithPostCount[] }) => {
   return (
-    <Wrap spacing={3}>
+    <Wrap spacing={3} justify="center" align="center">
       {labels.map((label) => (
         <WrapItem key={label.id}>
           <LabelContainer key={label.id} label={label} />
