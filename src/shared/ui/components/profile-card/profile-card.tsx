@@ -5,7 +5,7 @@ import { SharedImages } from '@shared/assets';
 
 export const ProfileCard = () => {
   return (
-    <VStack align="center" gap={4}>
+    <VStack align="center" gap={4} w="full">
       <Box
         borderRadius="full"
         overflow="hidden"
@@ -27,11 +27,11 @@ export const ProfileCard = () => {
       </Box>
       <VStack align="center" gap={1}>
         <Text fontWeight="bold">Tuan Le Hoang</Text>
-        <Hide below="lg">
+        <Hide below="xl">
           <LuDot />
         </Hide>
         <Text>Software Engineer</Text>
-        <Hide below="lg">
+        <Hide below="xl">
           <LuDot />
         </Hide>
         <Text>Sức khoẻ. Trí tuệ. Bản lĩnh</Text>

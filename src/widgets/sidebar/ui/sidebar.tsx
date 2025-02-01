@@ -16,7 +16,7 @@ export const Sidebar = () => {
       bg="bg.secondary"
       boxShadow="1px 0 10px rgba(0, 0, 0, 0.05)"
       align="stretch"
-      h={{ base: 'auto', lg: '100vh' }}
+      h={{ base: 'auto', xl: '100vh' }}
       overflowY="auto"
     >
       <ProfileCard />

@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 export const ContactSession = () => {
   return (
     <Box marginTop="auto">
-      <Hide below="lg">
+      <Hide below="xl">
         <Box position="relative" mb={6}>
           <Divider borderColor="black" borderWidth={1} />
 

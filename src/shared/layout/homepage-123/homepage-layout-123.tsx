@@ -11,9 +11,9 @@ export const HomepageLayout = ({ sideBar, children }: HomepageLayoutProps) => {
       <Grid
         templateColumns={{
           base: '1fr',
-          lg: '270px 1fr',
+          xl: '270px 1fr',
         }}
-        gap={{ base: 4, lg: 10 }}
+        gap={{ base: 4, xl: 10 }}
       >
         <GridItem>{sideBar}</GridItem>
 
