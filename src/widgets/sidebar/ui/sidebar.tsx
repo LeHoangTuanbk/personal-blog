@@ -19,6 +19,7 @@ export const Sidebar = () => {
       align="stretch"
       h={{ base: 'auto', xl: '100vh' }}
       overflowY="auto"
+      w="full"
     >
       <ProfileCard />
       <HomeLabelContainer />
