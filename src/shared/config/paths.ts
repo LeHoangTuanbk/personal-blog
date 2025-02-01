@@ -1,7 +1,7 @@
 export const paths = {
   home: {
     top: '/',
-    label: '/label/:label',
+    label: '/label-posts/:label',
     post: '/post/:slug',
   },
   admin: {

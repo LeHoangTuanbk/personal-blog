@@ -11,7 +11,7 @@ type LabelContainerProps = {
 export const LabelContainer = ({ label }: LabelContainerProps) => {
   const navigate = useNavigate();
   const handleClick = () => {
-    const url = generatePath(paths.home.label, { label: label.content });
+    const url = generatePath(paths.home.label, { label: label.slug });
     navigate(url);
   };
 
