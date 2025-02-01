@@ -20,7 +20,7 @@ export const PostCardContainer = ({ posts }: PostCardContainerProps) => {
       });
       navigate(viewPostDetailPath);
     } else {
-      const viewPostDetailPath = generatePath(paths.post, {
+      const viewPostDetailPath = generatePath(paths.home.post, {
         slug: posts.slug,
       });
       navigate(viewPostDetailPath);

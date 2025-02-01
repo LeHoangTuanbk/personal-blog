@@ -62,21 +62,20 @@ export const routes: RouteObject[] = [
                 <Outlet />
               </HomepageLayout>
             ),
-            path: paths.home,
             children: [
               {
                 element: <HomePageContainer />,
-                path: paths.home,
+                path: paths.home.top,
               },
               {
                 element: <HomePostDetailContainer />,
-                path: paths.post,
+                path: paths.home.post,
               },
             ],
           },
           {
             element: <LoginPageContainer />,
-            path: paths.login,
+            path: paths.admin.login,
           },
         ],
       },

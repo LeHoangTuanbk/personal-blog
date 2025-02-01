@@ -12,7 +12,7 @@ export const NotAuthorizedGuard = ({ children }: Props) => {
   // const { isLoggedIn } = useSession()
 
   if (isLoggedIn) {
-    return <Navigate to={paths.home} />;
+    return <Navigate to={paths.home.top} />;
   }
 
   return children;
