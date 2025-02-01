@@ -15,6 +15,7 @@ export const Label = ({ label, onClick }: LabelProps) => {
       px={4}
       py={1}
       borderRadius="sm"
+      cursor="pointer"
       onClick={onClick}
     >
       #{label}
