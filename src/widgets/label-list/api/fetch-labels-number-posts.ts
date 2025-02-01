@@ -1,3 +1,4 @@
+import { PostStatus } from '@entities/posts/model';
 import { supabaseDBTables } from '@shared/api/supabase-client';
 import { supabaseClient } from '@shared/api/supabase-client';
 
@@ -12,7 +13,7 @@ export const fetchLabelsNumberPosts = async () => {
         )
     `,
     )
-    .eq('posts_labels.posts.status', 'published')
+    .eq('posts_labels.posts.status', PostStatus.Published)
     .order('content', { ascending: true });
   if (error) {
     throw new Error(error.message);

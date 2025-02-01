@@ -8,5 +8,9 @@ export const LabelListContainer = () => {
   if (isLoading) return <Spinner />;
   if (error) return <Box>Error loading labels</Box>;
   if (!data) return <Box>No labels found</Box>;
-  return <LabelList labels={data} />;
+  return (
+    <Box mt="auto">
+      <LabelList labels={data} />
+    </Box>
+  );
 };

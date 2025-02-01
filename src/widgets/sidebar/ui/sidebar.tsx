@@ -7,9 +7,11 @@ export const Sidebar = () => {
   return (
     <VStack
       display="flex"
+      position="fixed" // Thêm position fixed
+      left={0} // Cố định ở bên trái
+      top={0}
       flexDirection="column"
       gap={4}
-      height="100%"
       px={2}
       py={2}
       bg="bg.secondary"
@@ -17,6 +19,7 @@ export const Sidebar = () => {
       align="stretch"
       width="100%"
       h="100vh"
+      w="250px"
     >
       <ProfileCard />
       <LabelListContainer />

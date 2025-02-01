@@ -12,12 +12,14 @@ export const PostDetail = ({ data }: PostDetailProps) => {
   const { adminPage: isAdminPage } = useAdminContext();
 
   return (
-    <VStack spacing={4} textAlign="left" alignItems="flex-start">
+    <VStack spacing={4} textAlign="left" alignItems="flex-start" my={10}>
       <VStack spacing={2} w="full">
         <Text as="h1" fontSize="2xl" fontWeight="bold">
           {data.title}
         </Text>
-        <Text>{data.created_at}</Text>
+        <Text>
+          {data.created_at} - {data.reading_time} minute read
+        </Text>
       </VStack>
       {isAdminPage && (
         <Tag
