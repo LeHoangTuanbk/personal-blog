@@ -12,6 +12,7 @@ export const fetchPostDetail = async (slug: string) => {
             status,
             content,
             slug,
+            reading_time,
             posts_labels(
                 labels(
                     content,
@@ -33,6 +34,7 @@ export const fetchPostDetail = async (slug: string) => {
       created_at: getDate(post.created_at),
       status: post.status,
       content: post.content,
+      reading_time: post.reading_time,
       labels_content: post.posts_labels.map((label) => label.labels.content),
       labels_slug: post.posts_labels.map((label) => label.labels.slug),
     };

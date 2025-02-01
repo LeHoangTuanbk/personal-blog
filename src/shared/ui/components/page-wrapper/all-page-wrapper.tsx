@@ -3,7 +3,7 @@ import React from 'react';
 
 export const AllPageWrapper = ({ children }: { children: React.ReactNode }) => {
   return (
-    <Box maxW="8xl" px={8} py={8}>
+    <Box maxW="8xl" bg="bg.primary">
       {children}
     </Box>
   );

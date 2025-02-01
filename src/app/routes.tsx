@@ -5,11 +5,14 @@ import { AdminDashboardContainer } from '@pages/admin/dashboard';
 import { AdminEditPostContainer } from '@pages/admin/edit-post';
 import { AdminViewPostDetailContainer } from '@pages/admin/view-post-detail';
 import { HomePageContainer } from '@pages/home';
+import { HomePostDetailContainer } from '@pages/home-post-detail';
 import { LoginPageContainer } from '@pages/login/';
 import { NotFoundPageContainer } from '@pages/not-found';
 import { paths } from '@shared/config';
 import { AdminProvider } from '@shared/context/admin-context';
+import { HomepageLayout } from '@shared/layout';
 import { AdminPageWrapper } from '@shared/ui/components';
+import { SidebarContainer } from '@widgets/sidebar';
 
 import { AuthorizedGuard, NotAuthorizedGuard, NotFoundGuard } from './guards';
 
@@ -54,12 +57,25 @@ export const routes: RouteObject[] = [
         ),
         children: [
           {
-            element: <HomePageContainer />,
-            path: paths.home,
+            element: (
+              <HomepageLayout sideBar={<SidebarContainer />}>
+                <Outlet />
+              </HomepageLayout>
+            ),
+            children: [
+              {
+                element: <HomePageContainer />,
+                path: paths.home.top,
+              },
+              {
+                element: <HomePostDetailContainer />,
+                path: paths.home.post,
+              },
+            ],
           },
           {
             element: <LoginPageContainer />,
-            path: paths.login,
+            path: paths.admin.login,
           },
         ],
       },
