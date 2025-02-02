@@ -16,7 +16,7 @@ export const PostDetail = ({ data }: PostDetailProps) => {
       spacing={4}
       textAlign="left"
       alignItems="flex-start"
-      my={{ base: 1, xl: 10 }}
+      my={{ base: 1, xl: 4 }}
       mx={4}
     >
       <VStack spacing={2} w="full">
