@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { keepPreviousData, useQuery } from '@tanstack/react-query';
 
 import { ViewPostFilterType } from '@entities/posts/model/types';
 import { fetchPostsData } from '@pages/admin/dashboard/api/fetch-posts-data';
@@ -9,5 +9,6 @@ export const useFetchPostsData = (viewPostFilter: ViewPostFilterType) => {
     queryKey: [QueryKeys.getAllPosts, viewPostFilter],
     queryFn: () => fetchPostsData(viewPostFilter),
     enabled: !!viewPostFilter,
+    placeholderData: keepPreviousData,
   });
 };
