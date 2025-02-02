@@ -6,6 +6,8 @@ import {
   HStack,
   Box,
   Tag,
+  Skeleton,
+  SkeletonText,
 } from '@chakra-ui/react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -52,38 +54,47 @@ export const AdminDashboard = () => {
       </HStack>
       <Divider borderColor="gray" borderWidth={1} />
       {isError && <Box>Error</Box>}
-      {isLoading && !isError ? (
-        <Box>Loading...</Box>
-      ) : (
-        <VStack alignItems="flex-start" spacing={4}>
-          <HStack mb={4}>
-            <Tag
-              key="active"
-              colorScheme={
-                viewPostFilter === ActivePost.Active ? 'orange' : 'gray'
-              }
-              cursor="pointer"
-              onClick={() => changeViewPostFilter(ActivePost.Active)}
-            >
-              Active posts
-            </Tag>
-            {PostStatusList.map((status) => (
-              <Tag
-                key={status}
-                colorScheme={viewPostFilter === status ? 'orange' : 'gray'}
-                cursor="pointer"
-                onClick={() => changeViewPostFilter(status)}
-              >
-                {status}
-              </Tag>
+      <Box w={{ base: '90%', lg: '4xl' }} minH="xs">
+        {isLoading && !isError ? (
+          <VStack spacing={4} w="full">
+            {[1, 2].map((i) => (
+              <Box key={i} w="full" p={4} boxShadow="md" borderRadius="md">
+                <SkeletonText noOfLines={2} spacing={4} />
+                <Skeleton height="200" mt={4} />
+              </Box>
             ))}
-          </HStack>
+          </VStack>
+        ) : (
+          <VStack alignItems="flex-start" spacing={4}>
+            <HStack mb={4}>
+              <Tag
+                key="active"
+                colorScheme={
+                  viewPostFilter === ActivePost.Active ? 'orange' : 'gray'
+                }
+                cursor="pointer"
+                onClick={() => changeViewPostFilter(ActivePost.Active)}
+              >
+                Active posts
+              </Tag>
+              {PostStatusList.map((status) => (
+                <Tag
+                  key={status}
+                  colorScheme={viewPostFilter === status ? 'orange' : 'gray'}
+                  cursor="pointer"
+                  onClick={() => changeViewPostFilter(status)}
+                >
+                  {status}
+                </Tag>
+              ))}
+            </HStack>
 
-          {data?.map((post) => (
-            <PostCardContainer key={post.id} posts={post} />
-          ))}
-        </VStack>
-      )}
+            {data?.map((post) => (
+              <PostCardContainer key={post.id} posts={post} />
+            ))}
+          </VStack>
+        )}
+      </Box>
     </VStack>
   );
 };
