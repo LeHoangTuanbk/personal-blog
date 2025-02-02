@@ -1,11 +1,15 @@
 import { Box, Heading, Text, HStack, Tag, Button } from '@chakra-ui/react';
 
+import { PostStatusType } from '@entities/posts/model';
+import { getStatusColor } from '@shared/libs';
+
 type PostCardProps = {
   title: string;
   description: string;
   labels: string[];
   date: string;
   readTime: string;
+  status: PostStatusType;
   onClick: () => void;
   onEdit: (e: React.MouseEvent<HTMLButtonElement>) => void;
   isAdminPage: boolean;
@@ -17,6 +21,7 @@ export const PostCard = ({
   labels,
   date,
   readTime,
+  status,
   onClick,
   onEdit,
   isAdminPage,
@@ -76,10 +81,18 @@ export const PostCard = ({
         ))}
       </HStack>
 
-      <HStack spacing={2} color="gray.500" fontSize="sm">
-        <Text>{date}</Text>
-        <Text>—</Text>
-        <Text>{readTime} minute read</Text>
+      <HStack
+        spacing={2}
+        color="gray.500"
+        fontSize="sm"
+        justifyContent="space-between"
+      >
+        <HStack>
+          <Text>{date}</Text>
+          <Text>—</Text>
+          <Text>{readTime} minute read</Text>
+        </HStack>
+        {isAdminPage && <Text color={getStatusColor(status)}>{status}</Text>}
       </HStack>
     </Box>
   );

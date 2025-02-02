@@ -1,3 +1,4 @@
+import { PostStatus } from '@entities/posts/model';
 import { supabaseClient } from '@shared/api/supabase-client';
 import { supabaseDBTables } from '@shared/api/supabase-client/index';
 import { getDate } from '@shared/libs';
@@ -25,6 +26,7 @@ export const fetchPostsData = async () => {
       )
     `,
     )
+    .neq('status', PostStatus.Archived)
     .order('created_at', { ascending: false });
   if (error) {
     throw new Error(error.message);

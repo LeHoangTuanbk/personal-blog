@@ -25,7 +25,7 @@ export const AdminDashboard = () => {
       return;
     }
     successToast('Logged out successfully');
-    navigate('/login');
+    navigate(paths.admin.login);
   };
   const handleAddPost = () => {
     navigate(paths.admin.addPost);
@@ -49,7 +49,7 @@ export const AdminDashboard = () => {
         <VStack alignItems="flex-start" spacing={4}>
           <HStack mb={4}>
             {/* Todo: need to use the multi select here */}
-            <Tag key="total">Total</Tag>
+            <Tag key="total">Active posts</Tag>
             {PostStatusList.map((status) => (
               <Tag key={status}>{status}</Tag>
             ))}
