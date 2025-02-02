@@ -14,7 +14,9 @@ export const HomeLabelContainer = () => {
 
   return (
     <Box display="flex" justifyContent="center" mt="auto " mx="auto">
-      <Button onClick={handleClick}>Back to home</Button>
+      <Button onClick={handleClick} colorScheme="blue" size="sm" fontSize="sm">
+        Back to home
+      </Button>
     </Box>
   );
 };
