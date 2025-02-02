@@ -17,7 +17,7 @@ export const Label = ({ label, count, isActive, onClick }: LabelProps) => {
       py={1}
       borderRadius="sm"
       cursor="pointer"
-      bg={isActive ? 'orange.100' : 'transparent'}
+      bg={isActive ? 'blue.50' : 'transparent'}
       borderColor={isActive ? 'gray.400' : 'transparent'}
       onClick={onClick}
     >
