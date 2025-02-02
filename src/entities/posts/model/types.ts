@@ -16,6 +16,16 @@ export const PostStatusList = [
 
 export type PostStatusType = (typeof PostStatusList)[number];
 
+export const ActivePost = {
+  Active: 'active',
+} as const;
+
+export const ActivePostList = [ActivePost.Active] as const;
+
+export type ActivePostType = (typeof ActivePostList)[number];
+
+export type ViewPostFilterType = PostStatusType | ActivePostType;
+
 export type PostView = {
   id: string;
   title: string;

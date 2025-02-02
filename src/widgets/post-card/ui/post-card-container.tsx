@@ -42,6 +42,7 @@ export const PostCardContainer = ({ posts }: PostCardContainerProps) => {
       labels={posts.labels}
       date={posts.created_at}
       readTime={posts.reading_time.toString()}
+      status={posts.status}
       onClick={handleViewPostDetail}
       onEdit={handleEditPost}
       isAdminPage={adminPage}

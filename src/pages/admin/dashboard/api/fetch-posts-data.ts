@@ -1,34 +1,14 @@
-import { supabaseClient } from '@shared/api/supabase-client';
-import { supabaseDBTables } from '@shared/api/supabase-client/index';
+import { ViewPostFilterType } from '@entities/posts/model/types';
+import { buildSupabasePostsFilterQuery } from '@pages/admin/dashboard/api/supabase-queries-builder';
 import { getDate } from '@shared/libs';
 
-export const fetchPostsData = async () => {
-  const { data, error } = await supabaseClient
-    .from(supabaseDBTables.posts)
-    .select(
-      `
-      id,
-      title,
-      content,
-      description,
-      created_at,
-      reading_time,
-      slug,
-      status,
-      posts_labels!inner (
-        label_id,
-        labels!inner (
-          id,
-          content,
-          slug
-        )
-      )
-    `,
-    )
-    .order('created_at', { ascending: false });
+export const fetchPostsData = async (viewPostFilter: ViewPostFilterType) => {
+  const query = buildSupabasePostsFilterQuery(viewPostFilter);
+  const { data, error } = await query;
   if (error) {
     throw new Error(error.message);
   }
+
   const flatData = data.map((post) => {
     return {
       id: post.id,
