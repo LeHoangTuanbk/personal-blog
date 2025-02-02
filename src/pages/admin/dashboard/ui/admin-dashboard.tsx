@@ -35,7 +35,7 @@ export const AdminDashboard = () => {
   const handleAddPost = () => {
     navigate(paths.admin.addPost);
   };
-  const { data, isLoading, isError } = useFetchPostsData();
+  const { data, isLoading, isError } = useFetchPostsData(viewPostFilter);
 
   const changeViewPostFilter = (filter: ViewPostFilterType) => {
     setViewPostFilter(filter);
