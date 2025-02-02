@@ -7,9 +7,11 @@ import {
   Box,
   Tag,
 } from '@chakra-ui/react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { PostStatusList } from '@entities/posts/model';
+import { ActivePost, ViewPostFilterType } from '@entities/posts/model/types';
 import { useFetchPostsData } from '@pages/admin/dashboard/api';
 import { supabaseClient } from '@shared/api/supabase-client';
 import { paths } from '@shared/config/paths';
@@ -18,6 +20,9 @@ import { PostCardContainer } from '@widgets/post-card/ui';
 export const AdminDashboard = () => {
   const navigate = useNavigate();
   const { successToast, errorToast } = useToast();
+  const [viewPostFilter, setViewPostFilter] = useState<ViewPostFilterType>(
+    ActivePost.Active,
+  );
   const handleLogout = async () => {
     const { error } = await supabaseClient.auth.signOut();
     if (error) {
@@ -31,6 +36,10 @@ export const AdminDashboard = () => {
     navigate(paths.admin.addPost);
   };
   const { data, isLoading, isError } = useFetchPostsData();
+
+  const changeViewPostFilter = (filter: ViewPostFilterType) => {
+    setViewPostFilter(filter);
+  };
 
   return (
     <VStack alignItems="flex-start" spacing={4}>
@@ -48,10 +57,25 @@ export const AdminDashboard = () => {
       ) : (
         <VStack alignItems="flex-start" spacing={4}>
           <HStack mb={4}>
-            {/* Todo: need to use the multi select here */}
-            <Tag key="total">Active posts</Tag>
+            <Tag
+              key="active"
+              colorScheme={
+                viewPostFilter === ActivePost.Active ? 'orange' : 'gray'
+              }
+              cursor="pointer"
+              onClick={() => changeViewPostFilter(ActivePost.Active)}
+            >
+              Active posts
+            </Tag>
             {PostStatusList.map((status) => (
-              <Tag key={status}>{status}</Tag>
+              <Tag
+                key={status}
+                colorScheme={viewPostFilter === status ? 'orange' : 'gray'}
+                cursor="pointer"
+                onClick={() => changeViewPostFilter(status)}
+              >
+                {status}
+              </Tag>
             ))}
           </HStack>
 
