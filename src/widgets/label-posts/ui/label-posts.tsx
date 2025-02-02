@@ -9,7 +9,7 @@ type LabelPostsProps = {
 
 export const LabelPosts = ({ posts }: LabelPostsProps) => {
   return (
-    <Box mt={10}>
+    <Box mt={10} mb={10}>
       <VStack alignItems={{ base: 'center', xl: 'flex-start' }} spacing={4}>
         {posts?.map((post) => <PostCardContainer key={post.id} posts={post} />)}
       </VStack>
