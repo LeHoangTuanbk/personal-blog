@@ -53,7 +53,28 @@ export const AdminDashboard = () => {
         <Button onClick={handleLogout}>Logout</Button>
       </HStack>
       <Divider borderColor="gray" borderWidth={1} />
+      <HStack mb={4}>
+        <Tag
+          key="active"
+          colorScheme={viewPostFilter === ActivePost.Active ? 'orange' : 'gray'}
+          cursor="pointer"
+          onClick={() => changeViewPostFilter(ActivePost.Active)}
+        >
+          Active posts
+        </Tag>
+        {PostStatusList.map((status) => (
+          <Tag
+            key={status}
+            colorScheme={viewPostFilter === status ? 'orange' : 'gray'}
+            cursor="pointer"
+            onClick={() => changeViewPostFilter(status)}
+          >
+            {status}
+          </Tag>
+        ))}
+      </HStack>
       {isError && <Box>Error</Box>}
+
       <Box w={{ base: '90%', lg: '4xl' }} minH="xs">
         {isLoading && !isError ? (
           <VStack spacing={4} w="full">
@@ -66,29 +87,6 @@ export const AdminDashboard = () => {
           </VStack>
         ) : (
           <VStack alignItems="flex-start" spacing={4}>
-            <HStack mb={4}>
-              <Tag
-                key="active"
-                colorScheme={
-                  viewPostFilter === ActivePost.Active ? 'orange' : 'gray'
-                }
-                cursor="pointer"
-                onClick={() => changeViewPostFilter(ActivePost.Active)}
-              >
-                Active posts
-              </Tag>
-              {PostStatusList.map((status) => (
-                <Tag
-                  key={status}
-                  colorScheme={viewPostFilter === status ? 'orange' : 'gray'}
-                  cursor="pointer"
-                  onClick={() => changeViewPostFilter(status)}
-                >
-                  {status}
-                </Tag>
-              ))}
-            </HStack>
-
             {data?.map((post) => (
               <PostCardContainer key={post.id} posts={post} />
             ))}
