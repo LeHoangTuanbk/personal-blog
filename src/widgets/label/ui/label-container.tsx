@@ -1,4 +1,4 @@
-import { generatePath, useNavigate } from 'react-router-dom';
+import { generatePath, useLocation, useNavigate } from 'react-router-dom';
 
 import { paths } from '@shared/config/paths';
 import { Label } from '@widgets/label/ui/label';
@@ -15,12 +15,18 @@ export const LabelContainer = ({ label }: LabelContainerProps) => {
     navigate(url);
   };
 
+  const location = useLocation();
+  const isActive = new RegExp(`/label-posts/${label.slug}(?:/|$)`).test(
+    location.pathname,
+  );
+
   return (
     <Label
       key={label.id}
       label={label.content}
       count={label.posts.length}
       onClick={handleClick}
+      isActive={isActive}
     />
   );
 };
