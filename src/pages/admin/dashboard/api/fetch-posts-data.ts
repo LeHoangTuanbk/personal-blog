@@ -1,9 +1,9 @@
 import { ViewPostFilterType } from '@entities/posts/model/types';
-import { buildSupabaseQuery } from '@pages/admin/dashboard/api/supabase-queries-builder';
+import { buildSupabasePostsFilterQuery } from '@pages/admin/dashboard/api/supabase-queries-builder';
 import { getDate } from '@shared/libs';
 
 export const fetchPostsData = async (viewPostFilter: ViewPostFilterType) => {
-  const query = buildSupabaseQuery(viewPostFilter);
+  const query = buildSupabasePostsFilterQuery(viewPostFilter);
   const { data, error } = await query;
   if (error) {
     throw new Error(error.message);
