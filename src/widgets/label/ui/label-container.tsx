@@ -14,11 +14,14 @@ export const LabelContainer = ({ label }: LabelContainerProps) => {
     const url = generatePath(paths.home.label, { label: label.slug });
     navigate(url);
   };
-
   const location = useLocation();
-  const isActive = new RegExp(`/label-posts/${label.slug}(?:/|$)`).test(
-    location.pathname,
-  );
+
+  const getIsActive = () => {
+    const url = generatePath(paths.home.label, { label: label.slug });
+    return new RegExp(`${url}(?:/|$)`).test(location.pathname);
+  };
+
+  const isActive = getIsActive();
 
   return (
     <Label
