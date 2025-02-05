@@ -35,7 +35,11 @@ export const AdminDashboard = () => {
     navigate(paths.admin.login);
   };
   const handleAddPost = () => {
-    navigate(paths.admin.addPost);
+    try {
+      window.open(paths.admin.addPost, '_blank');
+    } catch (error) {
+      errorToast('Failed to open new window to add post');
+    }
   };
   const { data, isLoading, isError } = useFetchPostsData(viewPostFilter);
 
