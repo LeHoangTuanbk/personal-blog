@@ -2,6 +2,7 @@ import { Box, Text, VStack, HStack, Tag } from '@chakra-ui/react';
 
 import { useAdminContext } from '@shared/context/admin-context';
 import { getStatusColor } from '@shared/libs';
+import { ScrollToTop } from '@shared/ui/components/scroll-to-top';
 import { type PostDetailType } from '@widgets/post-detail/api';
 
 type PostDetailProps = {
@@ -16,8 +17,9 @@ export const PostDetail = ({ data }: PostDetailProps) => {
       spacing={4}
       textAlign="left"
       alignItems="flex-start"
-      my={{ base: 1, xl: 4 }}
+      my={{ base: 2, xl: 4 }}
       mx={4}
+      position="relative"
     >
       <VStack spacing={2} w="full">
         <Text as="h1" fontSize="2xl" fontWeight="bold">
@@ -55,6 +57,7 @@ export const PostDetail = ({ data }: PostDetailProps) => {
           </Tag>
         ))}
       </HStack>
+      <ScrollToTop />
     </VStack>
   );
 };
