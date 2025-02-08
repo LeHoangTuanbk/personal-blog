@@ -14,21 +14,21 @@ export type Database = {
           content: string;
           created_at: string;
           id: string;
-          slug: string | null;
+          slug: string;
           updated_at: string;
         };
         Insert: {
           content: string;
           created_at?: string;
-          id: string;
-          slug?: string | null;
+          id?: string;
+          slug: string;
           updated_at?: string;
         };
         Update: {
           content?: string;
           created_at?: string;
           id?: string;
-          slug?: string | null;
+          slug?: string;
           updated_at?: string;
         };
         Relationships: [];
@@ -37,32 +37,41 @@ export type Database = {
         Row: {
           content: string;
           created_at: string;
+          description: string;
           id: string;
-          slug: string | null;
+          reading_time: number;
+          slug: string;
           status: Database['public']['Enums']['post_status'];
-          title: string | null;
+          title: string;
           updated_at: string;
           user_id: string;
+          views: number | null;
         };
         Insert: {
           content: string;
           created_at?: string;
-          id: string;
-          slug?: string | null;
+          description?: string;
+          id?: string;
+          reading_time?: number;
+          slug: string;
           status: Database['public']['Enums']['post_status'];
-          title?: string | null;
+          title: string;
           updated_at?: string;
-          user_id: string;
+          user_id?: string;
+          views?: number | null;
         };
         Update: {
           content?: string;
           created_at?: string;
+          description?: string;
           id?: string;
-          slug?: string | null;
+          reading_time?: number;
+          slug?: string;
           status?: Database['public']['Enums']['post_status'];
-          title?: string | null;
+          title?: string;
           updated_at?: string;
           user_id?: string;
+          views?: number | null;
         };
         Relationships: [
           {
@@ -109,7 +118,6 @@ export type Database = {
           created_at: string;
           email_address: string;
           id: string;
-          password: string;
           role: Database['public']['Enums']['user_role'];
           status: Database['public']['Enums']['user_status'];
           updated_at: string;
@@ -118,7 +126,6 @@ export type Database = {
           created_at?: string;
           email_address: string;
           id: string;
-          password: string;
           role: Database['public']['Enums']['user_role'];
           status: Database['public']['Enums']['user_status'];
           updated_at?: string;
@@ -127,7 +134,6 @@ export type Database = {
           created_at?: string;
           email_address?: string;
           id?: string;
-          password?: string;
           role?: Database['public']['Enums']['user_role'];
           status?: Database['public']['Enums']['user_status'];
           updated_at?: string;
@@ -139,7 +145,15 @@ export type Database = {
       [_ in never]: never;
     };
     Functions: {
-      [_ in never]: never;
+      update_post_with_labels: {
+        Args: {
+          p_post_id: string;
+          p_post_data: Json;
+          p_added_label_ids: string[];
+          p_removed_label_ids: string[];
+        };
+        Returns: undefined;
+      };
     };
     Enums: {
       post_status: 'draft' | 'published' | 'archived';

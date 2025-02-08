@@ -1,10 +1,19 @@
 import { Outlet, RouteObject } from 'react-router-dom';
 
+import { AddPostContainer } from '@pages/admin/add-post';
 import { AdminDashboardContainer } from '@pages/admin/dashboard';
+import { AdminEditPostContainer } from '@pages/admin/edit-post';
+import { AdminViewPostDetailContainer } from '@pages/admin/view-post-detail';
 import { HomePageContainer } from '@pages/home';
+import { HomeLabelPostsContainer } from '@pages/home-label-posts';
+import { HomePostDetailContainer } from '@pages/home-post-detail';
 import { LoginPageContainer } from '@pages/login/';
 import { NotFoundPageContainer } from '@pages/not-found';
 import { paths } from '@shared/config';
+import { AdminProvider } from '@shared/context/admin-context';
+import { HomepageLayout } from '@shared/layout';
+import { AdminPageWrapper } from '@shared/ui/components';
+import { SidebarContainer } from '@widgets/sidebar';
 
 import { AuthorizedGuard, NotAuthorizedGuard, NotFoundGuard } from './guards';
 
@@ -15,13 +24,29 @@ export const routes: RouteObject[] = [
       {
         element: (
           <AuthorizedGuard>
-            <Outlet />
+            <AdminPageWrapper>
+              <AdminProvider>
+                <Outlet />
+              </AdminProvider>
+            </AdminPageWrapper>
           </AuthorizedGuard>
         ),
         children: [
           {
             element: <AdminDashboardContainer />,
             path: paths.admin.dashboard,
+          },
+          {
+            element: <AddPostContainer />,
+            path: paths.admin.addPost,
+          },
+          {
+            element: <AdminViewPostDetailContainer />,
+            path: paths.admin.viewPostDetail,
+          },
+          {
+            element: <AdminEditPostContainer />,
+            path: paths.admin.editPost,
           },
         ],
       },
@@ -33,12 +58,29 @@ export const routes: RouteObject[] = [
         ),
         children: [
           {
-            element: <HomePageContainer />,
-            path: paths.home,
+            element: (
+              <HomepageLayout sideBar={<SidebarContainer />}>
+                <Outlet />
+              </HomepageLayout>
+            ),
+            children: [
+              {
+                element: <HomePageContainer />,
+                path: paths.home.top,
+              },
+              {
+                element: <HomePostDetailContainer />,
+                path: paths.home.post,
+              },
+              {
+                element: <HomeLabelPostsContainer />,
+                path: paths.home.label,
+              },
+            ],
           },
           {
             element: <LoginPageContainer />,
-            path: paths.login,
+            path: paths.admin.login,
           },
         ],
       },
