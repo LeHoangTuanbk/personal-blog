@@ -6,8 +6,6 @@ import {
   HStack,
   Box,
   Tag,
-  Skeleton,
-  SkeletonText,
 } from '@chakra-ui/react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -18,7 +16,7 @@ import { useFetchPostsData } from '@pages/admin/dashboard/api';
 import { supabaseClient } from '@shared/api/supabase-client';
 import { paths } from '@shared/config/paths';
 import { useToast } from '@shared/ui/components/toast-factory';
-import { PostCardContainer } from '@widgets/post-card/ui';
+import { PostCardContainer, PostCardListSkeleton } from '@widgets/post-card/ui';
 export const AdminDashboard = () => {
   const navigate = useNavigate();
   const { successToast, errorToast } = useToast();
@@ -81,14 +79,7 @@ export const AdminDashboard = () => {
 
       <Box w={{ base: '90%', lg: '4xl' }} minH="xs">
         {isLoading && !isError ? (
-          <VStack spacing={4} w="full">
-            {[1, 2].map((i) => (
-              <Box key={i} w="full" p={4} boxShadow="md" borderRadius="md">
-                <SkeletonText noOfLines={2} spacing={4} />
-                <Skeleton height="200" mt={4} />
-              </Box>
-            ))}
-          </VStack>
+          <PostCardListSkeleton count={4} />
         ) : (
           <VStack alignItems="flex-start" spacing={4}>
             {data?.map((post) => (
