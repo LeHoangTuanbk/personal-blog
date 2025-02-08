@@ -1,18 +1,21 @@
 import { Flex, Skeleton } from '@chakra-ui/react';
 
-const SIZES = [
+const LabelSkeletonWidthSize = [
   { base: '80px', sm: '100px' },
   { base: '100px', sm: '120px' },
   { base: '120px', sm: '140px' },
 ];
 
 const LabelSkeleton = () => {
-  const size = SIZES[Math.floor(Math.random() * SIZES.length)];
+  const labelSkeletonWidthSize =
+    LabelSkeletonWidthSize[
+      Math.floor(Math.random() * LabelSkeletonWidthSize.length)
+    ];
 
   return (
     <Skeleton
       height={8}
-      width={size}
+      width={labelSkeletonWidthSize}
       borderRadius="sm"
       px={4}
       py={1}
